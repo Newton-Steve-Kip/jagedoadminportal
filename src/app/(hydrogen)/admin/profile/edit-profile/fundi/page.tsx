@@ -11,11 +11,11 @@ export default function OrderDetailsPage({ params }: any) {
     breadcrumb: [
       {
         href: routes.admin.dashboard,
-        name: 'E-Commerce',
+        name: 'Home',
       },
       {
         href: routes.admin.editFundiProfile,
-        name: 'Orders',
+        name: 'Edit Fundi Profile',
       },
       {
         name: params.id,

@@ -1,7 +1,7 @@
 'use client';
 
 import { HeaderCell } from '@/components/ui/table';
-import { Text, Checkbox, ActionIcon, Tooltip, Select } from 'rizzui';
+import { Text, Checkbox, ActionIcon, Tooltip, Select, Button } from 'rizzui';
 import PencilIcon from '@/components/icons/pencil';
 import EyeIcon from '@/components/icons/eye';
 import DeletePopover from '@/app/shared/commons/delete-popover';
@@ -9,8 +9,6 @@ import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
-import Link from 'next/link';
-import { routes } from '@/config/routes';
 
 const statusOptions = [
   { label: 'Live', value: 'Live' },
@@ -37,84 +35,87 @@ export const getColumns = ({
   onHeaderCellClick,
 }: Columns) => [
   {
-    title: <HeaderCell title="NUMBER" />,
-    dataIndex: 'id',
-    key: 'id',
-    width: 90,
-    render: (id: string) => <Text>RE#{id}</Text>,
+    title: (
+      <div className="ps-3.5">
+        <Checkbox
+          title={'Select All'}
+          onChange={handleSelectAll}
+          checked={checkedItems.length === data.length}
+          className="cursor-pointer"
+        />
+      </div>
+    ),
+    dataIndex: 'checked',
+    key: 'checked',
+    width: 30,
+    render: (_: any, row: any) => (
+      <div className="inline-flex ps-3.5">
+        <Checkbox
+          aria-label={'ID'}
+          className="cursor-pointer"
+          checked={checkedItems.includes(row.id)}
+          {...(onChecked && { onChange: () => onChecked(row.id) })}
+        />
+      </div>
+    ),
   },
   {
-    title: <HeaderCell title="Joined Date" className="uppercase" />,
-    dataIndex: 'date',
-    key: 'date',
-    width: 230,
-    render: (date: Date) => <DateCell date={date} />,
+    title: <HeaderCell title="QTN NO." />,
+    dataIndex: 'id',
+    key: 'id',
+    width: 20,
+    render: (id: string) => <Text>#{id}</Text>,
   },
 
   {
-    title: <HeaderCell title="Category" />,
-    dataIndex: 'category',
-    key: 'category',
-    width: 200,
-    render: (category: string) => (
+    title: <HeaderCell title="Service Provider" />,
+    dataIndex: 'serviceProvider',
+    key: 'serviceProvider',
+    width: 100,
+    render: (serviceProvider: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {category}
+        {serviceProvider}
       </Text>
     ),
   },
-  {
-    title: <HeaderCell title="Sub Category" />,
-    dataIndex: 'subCategory',
-    key: 'subCategory',
-    width: 200,
-    render: (subCategory: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {subCategory}
-      </Text>
-    ),
-  },
-  {
-    title: <HeaderCell title="Request Type" />,
-    dataIndex: 'requestType',
-    key: 'requestType',
-    width: 200,
-    render: (requestType: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {requestType}
-      </Text>
-    ),
-  },
-  {
-    title: <HeaderCell title="Description" />,
-    dataIndex: 'description',
-    key: 'description',
-    width: 200,
-    render: (description: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {description}
-      </Text>
-    ),
-  },
+
   {
     title: <HeaderCell title="Location" />,
     dataIndex: 'location',
     key: 'location',
-    width: 200,
-    render: (location: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {location}
-      </Text>
-    ),
+    width: 80,
+    render: (location: string) => <Text>{location}</Text>,
+  },
+  {
+    title: <HeaderCell title="Amount" />,
+    dataIndex: 'amount',
+    key: 'amount',
+    width: 40,
+    render: (amount: string) => <Text>{amount}</Text>,
   },
 
   {
-    title: <HeaderCell title="Joined Date" className="uppercase" />,
+    title: <HeaderCell title="Qtn Date" className="uppercase" />,
     dataIndex: 'date',
     key: 'date',
-    width: 230,
+    width: 100,
     render: (date: Date) => <DateCell date={date} />,
   },
 
+  {
+    title: <HeaderCell title="Rating" />,
+    dataIndex: 'rating',
+    key: 'rating',
+    width: 10,
+    render: (rating: string) => <Text>{rating}</Text>,
+  },
+  {
+    title: <HeaderCell title="Score" />,
+    dataIndex: 'score',
+    key: 'score',
+    width: 10,
+    render: (score: string) => <Text>{score}</Text>,
+  },
   {
     title: (
       <HeaderCell
@@ -128,7 +129,7 @@ export const getColumns = ({
     onHeaderCell: () => onHeaderCellClick('status'),
     dataIndex: 'status',
     key: 'status',
-    width: 100,
+    width: 40,
     render: (status: string) => {
       return <StatusSelect selectItem={status} />;
     },
@@ -138,27 +139,13 @@ export const getColumns = ({
     title: <HeaderCell title="Actions" />,
     dataIndex: 'action',
     key: 'action',
-    width: 180,
+    width: 100,
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
-        <Tooltip size="sm" content={'View'} placement="top" color="invert">
-          <ActionIcon
-            as="span"
-            size="sm"
-            variant="outline"
-            aria-label={'View Appointment'}
-            className="hover:!border-gray-900 hover:text-gray-700"
-          >
-            <Link href={routes.admin.requisitionDetails}>
-              <EyeIcon className="h-4 w-4" />
-            </Link>
-          </ActionIcon>
-        </Tooltip>
-        {/* <DeletePopover
-          title={`Remove User`}
-          description={`Are you sure you want to remove this User?`}
-          onDelete={() => onDeleteItem(row.id)}
-        /> */}
+        <Button size="sm"> Evaluate</Button>
+        <Button size="sm" className="p-2">
+          Generate Report
+        </Button>
       </div>
     ),
   },

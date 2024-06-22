@@ -1,14 +1,11 @@
 'use client';
 
 import { HeaderCell } from '@/components/ui/table';
-import { Text, Checkbox, ActionIcon, Tooltip, Select } from 'rizzui';
-import PencilIcon from '@/components/icons/pencil';
+import { Text, Checkbox, ActionIcon, Tooltip, Select, Button } from 'rizzui';
 import EyeIcon from '@/components/icons/eye';
-import DeletePopover from '@/app/shared/commons/delete-popover';
 import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
-import { last } from 'lodash';
 import Link from 'next/link';
 import { routes } from '@/config/routes';
 
@@ -37,25 +34,54 @@ export const getColumns = ({
   onHeaderCellClick,
 }: Columns) => [
   {
-    title: <HeaderCell title="NUMBER" />,
-    dataIndex: 'id',
-    key: 'id',
-    width: 90,
-    render: (id: string) => <Text>RE#{id}</Text>,
+    title: (
+      <div className="ps-3.5">
+        <Checkbox
+          title={'Select All'}
+          onChange={handleSelectAll}
+          checked={checkedItems.length === data.length}
+          className="cursor-pointer"
+        />
+      </div>
+    ),
+    dataIndex: 'checked',
+    key: 'checked',
+    width: 30,
+    render: (_: any, row: any) => (
+      <div className="inline-flex ps-3.5">
+        <Checkbox
+          aria-label={'ID'}
+          className="cursor-pointer"
+          checked={checkedItems.includes(row.id)}
+          {...(onChecked && { onChange: () => onChecked(row.id) })}
+        />
+      </div>
+    ),
   },
   {
-    title: <HeaderCell title="Joined Date" className="uppercase" />,
-    dataIndex: 'date',
-    key: 'date',
-    width: 230,
-    render: (date: Date) => <DateCell date={date} />,
+    title: <HeaderCell title="JOB NO" />,
+    dataIndex: 'id',
+    key: 'id',
+    width: 50,
+    render: (id: string) => <Text>RFQ#{id}</Text>,
   },
 
+  {
+    title: <HeaderCell title="RFQ type" />,
+    dataIndex: 'rfqType',
+    key: 'rfqType',
+    width: 30,
+    render: (rfqType: string) => (
+      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
+        {rfqType}
+      </Text>
+    ),
+  },
   {
     title: <HeaderCell title="Category" />,
     dataIndex: 'category',
     key: 'category',
-    width: 200,
+    width: 50,
     render: (category: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
         {category}
@@ -66,7 +92,7 @@ export const getColumns = ({
     title: <HeaderCell title="Sub Category" />,
     dataIndex: 'subCategory',
     key: 'subCategory',
-    width: 200,
+    width: 50,
     render: (subCategory: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
         {subCategory}
@@ -74,44 +100,26 @@ export const getColumns = ({
     ),
   },
   {
-    title: <HeaderCell title="Request Type" />,
-    dataIndex: 'requestType',
-    key: 'requestType',
-    width: 200,
-    render: (requestType: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {requestType}
-      </Text>
-    ),
-  },
-  {
     title: <HeaderCell title="Description" />,
     dataIndex: 'description',
     key: 'description',
-    width: 200,
-    render: (description: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {description}
-      </Text>
-    ),
+    width: 150,
+    render: (description: string) => <Text>{description}</Text>,
   },
+
   {
     title: <HeaderCell title="Location" />,
     dataIndex: 'location',
     key: 'location',
-    width: 200,
-    render: (location: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {location}
-      </Text>
-    ),
+    width: 50,
+    render: (location: string) => <Text>{location}</Text>,
   },
 
   {
-    title: <HeaderCell title="Joined Date" className="uppercase" />,
+    title: <HeaderCell title="Date" className="uppercase" />,
     dataIndex: 'date',
     key: 'date',
-    width: 230,
+    width: 60,
     render: (date: Date) => <DateCell date={date} />,
   },
 
@@ -128,37 +136,24 @@ export const getColumns = ({
     onHeaderCell: () => onHeaderCellClick('status'),
     dataIndex: 'status',
     key: 'status',
-    width: 100,
+    width: 20,
     render: (status: string) => {
       return <StatusSelect selectItem={status} />;
     },
   },
   {
-    // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
     title: <HeaderCell title="Actions" />,
     dataIndex: 'action',
     key: 'action',
-    width: 180,
+    width: 10,
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
-        <Tooltip size="sm" content={'View'} placement="top" color="invert">
-          <ActionIcon
-            as="span"
-            size="sm"
-            variant="outline"
-            aria-label={'View Appointment'}
-            className="hover:!border-gray-900 hover:text-gray-700"
-          >
-            <Link href={routes.admin.requisitionDetails}>
-              <EyeIcon className="h-4 w-4" />
-            </Link>
-          </ActionIcon>
-        </Tooltip>
-        {/* <DeletePopover
-          title={`Remove User`}
-          description={`Are you sure you want to remove this User?`}
-          onDelete={() => onDeleteItem(row.id)}
-        /> */}
+        <Link href={routes.admin.analyzeQuotations}>
+          {' '}
+          <Button color="primary" rounded="lg">
+            Analyse
+          </Button>
+        </Link>
       </div>
     ),
   },

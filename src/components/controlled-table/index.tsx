@@ -60,7 +60,7 @@ export default function ControlledTable({
 
       <div className="relative">
         <Table
-          scroll={{ x: 600 }}
+          scroll={{ x: 400 }}
           rowKey={(record) => record.id}
           className={cn(className)}
           {...tableProps}

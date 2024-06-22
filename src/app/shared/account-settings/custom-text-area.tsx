@@ -13,6 +13,8 @@ import {
   PersonalInfoFormTypes,
 } from '@/utils/validators/personal-info.schema';
 import WidgetCard from '@/components/cards/widget-card';
+import { useRouter } from 'next/navigation';
+import { routes } from '@/config/routes';
 
 const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
   ssr: false,
@@ -28,10 +30,14 @@ const QuillEditor = dynamic(() => import('@/components/ui/quill-editor'), {
 });
 
 export default function CustomTextArea({ className }: { className?: string }) {
-  const onSubmit: SubmitHandler<PersonalInfoFormTypes> = (data) => {
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<PersonalInfoFormTypes> = () => {
+    router.push(routes.admin.addToServiceProviders);
+
     toast.success(<Text as="b">Successfully added!</Text>);
     console.log('Profile settings data ->', {
-      ...data,
+      // ...data,
     });
   };
 
@@ -41,8 +47,9 @@ export default function CustomTextArea({ className }: { className?: string }) {
       className={className}
       headerClassName="mb-2 @2xl:mb-5"
     >
-      <Form<PersonalInfoFormTypes>
-        validationSchema={personalInfoFormSchema}
+      <Form
+        // <PersonalInfoFormTypes>
+        //   validationSchema={personalInfoFormSchema}
         // resetValues={reset}
         onSubmit={onSubmit}
         className="@container"

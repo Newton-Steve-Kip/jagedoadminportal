@@ -104,7 +104,7 @@ export default function CustomersTable({ className }: { className?: string }) {
       }
     >
       <ControlledTable
-        variant="modern"
+        variant="minimal"
         data={tableData}
         isLoading={isLoading}
         showLoadingText={true}

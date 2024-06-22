@@ -1,3 +1,5 @@
+import { requisitions } from '@/data/job-data';
+
 export const routes = {
   admin: {
     dashboard: '/admin',
@@ -19,12 +21,17 @@ export const routes = {
     individual: '/admin/registers/individual',
     organization: '/admin/registers/organization',
     serviceProvider: '/admin/registers/service-provider',
-    adminRequisitions: '/admin/registers/requisitions/admin',
+    fundis: '/admin/registers/fundi',
+    requisitions: '/admin/registers/requisitions',
     customerRequisitions: '/admin/registers/requisitions/customer',
     assignServiceProvider: '/admin/service-providers/assign-service-provider',
-    quotations: '/admin/quotations',
-    analyzeQuotations: '/admin/quotations/analyzeQuotations',
+    quotations: '/admin/registers/quotations',
+    quotedRequisitions: '/admin/registers/requisitions/quoted-requisitions',
+    analyzeQuotations: '/admin/registers/quotations/analyze-quotations',
     evaluate: '/admin/quotations/evaluateQuotations',
+
+    //Requisition details
+    requisitionDetails: '/admin/requisition-details',
   },
 
   customers: {
@@ -32,7 +39,10 @@ export const routes = {
     generateInvoice: '/customers/generate-invoice',
     invoice: '/customers/invoice',
     jobs: '/customers/jobs',
-    viewRequisition: '/customers/requisitions/view-requisition',
+
+    //Registers
+    requisitions: '/customers/registers/requisitions',
+    requisitionDetails: '/customers/registers/requisitions/view-requisition',
   },
 
   eCommerce: {

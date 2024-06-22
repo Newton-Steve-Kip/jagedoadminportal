@@ -14,24 +14,19 @@ import { useMedia } from '@/hooks/use-media';
 
 const data = [
   {
-    name: 'Youtube',
-    sales: 31.47,
+    name: 'Requisitions',
+    sales: 31,
     fill: '#FF0000',
   },
   {
-    name: 'Instagram',
-    sales: 26.69,
+    name: 'Quotations',
+    sales: 26,
     fill: '#E1306C',
   },
   {
-    name: 'Twitter',
-    sales: 15.69,
+    name: 'Completed Jobs',
+    sales: 15,
     fill: '#1DA1F2',
-  },
-  {
-    name: 'Facebook',
-    sales: 8.22,
-    fill: '#4267B2',
   },
 ];
 
@@ -40,11 +35,11 @@ export default function PromotionalSales({
 }: {
   className?: string;
 }) {
-  const isMobile = useMedia('(max-width: 480px)', false);
+  const isMobile = useMedia('(max-width: 300px)', true);
   const [startDate, setStartDate] = useState<Date>(new Date());
   return (
     <WidgetCard
-      title={'Promotional Sales'}
+      title={'Jobs'}
       action={
         <DatePicker
           selected={startDate}
@@ -62,7 +57,7 @@ export default function PromotionalSales({
       }
       className={cn('@container', className)}
     >
-      <div className="h-96 w-full pb-4 pt-4 @sm:h-96 @xl:pb-0">
+      <div className="-mt-20 h-96 w-full  pb-4 @sm:h-96 @xl:pb-0">
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -70,7 +65,7 @@ export default function PromotionalSales({
         >
           <RadialBarChart
             innerRadius="20%"
-            outerRadius="110%"
+            outerRadius="80%"
             barSize={isMobile ? 16 : 24}
             data={data}
             className="rtl:[&_.recharts-legend-item>svg]:ml-1"
@@ -81,7 +76,7 @@ export default function PromotionalSales({
               dataKey="sales"
               className="[&_.recharts-radial-bar-background-sector]:fill-gray-100"
             />
-            <Legend iconSize={10} layout="vertical" verticalAlign="middle" />
+            <Legend iconSize={10} layout="vertical" verticalAlign="top" />
           </RadialBarChart>
         </ResponsiveContainer>
       </div>

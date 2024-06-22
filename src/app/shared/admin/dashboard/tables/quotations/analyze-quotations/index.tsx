@@ -5,8 +5,8 @@ import { useColumn } from '@/hooks/use-column';
 import { useTable } from '@/hooks/use-table';
 import ControlledTable from '@/components/controlled-table';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import { Input } from 'rizzui';
-import { jobData } from '@/data/job-data';
+import { Button, Input } from 'rizzui';
+import { jobData, quotationData } from '@/data/job-data';
 import { getColumns } from './columns';
 import FilterElement from './filter-element';
 import WidgetCard2 from '@/components/cards/widget-card2';
@@ -15,7 +15,11 @@ const filterState = {
   date: [null, null],
   status: '',
 };
-export default function QuotationsTable({ className }: { className?: string }) {
+export default function AnalyzeQuotationsTable({
+  className,
+}: {
+  className?: string;
+}) {
   const [pageSize, setPageSize] = useState(7);
 
   const onHeaderCellClick = (value: string) => ({
@@ -47,12 +51,12 @@ export default function QuotationsTable({ className }: { className?: string }) {
     handleSelectAll,
     handleDelete,
     handleReset,
-  } = useTable(jobData, pageSize, filterState);
+  } = useTable(quotationData, pageSize, filterState);
 
   const columns = useMemo(
     () =>
       getColumns({
-        data: jobData,
+        data: quotationData,
         sortConfig,
         checkedItems: selectedRowKeys,
         onHeaderCellClick,
@@ -79,7 +83,7 @@ export default function QuotationsTable({ className }: { className?: string }) {
       className={className}
       headerClassName="mb-2 items-start flex-col @[57rem]:flex-row @[57rem]:items-center"
       actionClassName="grow @[57rem]:ps-11 ps-0 items-center w-full @[42rem]:w-full @[57rem]:w-auto "
-      title="Quotations"
+      title="Analyze Quotations"
       titleClassName="whitespace-nowrap font-inter"
       action={
         <div className=" mt-4 flex w-full flex-col-reverse items-center justify-between  gap-3  @[42rem]:flex-row @[57rem]:mt-0">
@@ -89,6 +93,7 @@ export default function QuotationsTable({ className }: { className?: string }) {
             updateFilter={updateFilter}
             handleReset={handleReset}
           />
+
           <Input
             className="w-full @[42rem]:w-auto @[70rem]:w-80"
             type="search"

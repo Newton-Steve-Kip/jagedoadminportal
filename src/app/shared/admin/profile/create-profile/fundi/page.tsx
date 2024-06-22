@@ -50,7 +50,9 @@ export default function CreateFundiForm({
       setLoading(false);
       console.log('product_data', data);
       toast.success(
-        <Text as="b">Product successfully {slug ? 'updated' : 'created'}</Text>
+        <Text as="b">
+          Fundi details successfully {slug ? 'updated' : 'added'}
+        </Text>
       );
       methods.reset();
     }, 600);
@@ -60,7 +62,7 @@ export default function CreateFundiForm({
     <div className="@container">
       <FormNav
         className={cn(
-          layout === LAYOUT_OPTIONS.HYDROGEN && 'z-[999] 2xl:top-[72px]'
+          layout === LAYOUT_OPTIONS.HYDROGEN && 'z-[999] 2xl:top-[60px]'
         )}
       />
       <FormProvider {...methods}>

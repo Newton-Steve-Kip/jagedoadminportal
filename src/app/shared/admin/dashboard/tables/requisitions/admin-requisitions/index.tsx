@@ -6,7 +6,7 @@ import { useTable } from '@/hooks/use-table';
 import ControlledTable from '@/components/controlled-table';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 import { Input } from 'rizzui';
-import { jobData } from '@/data/job-data';
+import { requisitions } from '@/data/job-data';
 import { getColumns } from './columns';
 import FilterElement from './filter-element';
 import WidgetCard2 from '@/components/cards/widget-card2';
@@ -15,7 +15,7 @@ const filterState = {
   date: [null, null],
   status: '',
 };
-export default function AdminRequisitionsTable({
+export default function RequisitionsTable({
   className,
 }: {
   className?: string;
@@ -51,12 +51,12 @@ export default function AdminRequisitionsTable({
     handleSelectAll,
     handleDelete,
     handleReset,
-  } = useTable(jobData, pageSize, filterState);
+  } = useTable(requisitions, pageSize, filterState);
 
   const columns = useMemo(
     () =>
       getColumns({
-        data: jobData,
+        data: requisitions,
         sortConfig,
         checkedItems: selectedRowKeys,
         onHeaderCellClick,
@@ -83,7 +83,7 @@ export default function AdminRequisitionsTable({
       className={className}
       headerClassName="mb-2 items-start flex-col @[57rem]:flex-row @[57rem]:items-center"
       actionClassName="grow @[57rem]:ps-11 ps-0 items-center w-full @[42rem]:w-full @[57rem]:w-auto "
-      title="Customers Register"
+      title="Requisitions"
       titleClassName="whitespace-nowrap font-inter"
       action={
         <div className=" mt-4 flex w-full flex-col-reverse items-center justify-between  gap-3  @[42rem]:flex-row @[57rem]:mt-0">

@@ -32,10 +32,11 @@ export default function PersonalDetailsForm({
   return (
     <FormGroup
       title="Personal Details"
-      description="Edit your product description and necessary information from here"
+      description=""
       className={cn(className)}
     >
       <Input
+        className="-mt-4"
         label="Company Name"
         placeholder="Company Name"
         {...register('title')}
@@ -43,48 +44,55 @@ export default function PersonalDetailsForm({
       />
 
       <Input
+        className="-mt-4"
         label="Company Email"
         placeholder="Company Email"
-        {...register('sku')}
+        {...register('companyEmail')}
         error={errors.sku?.message as string}
       />
 
       <Input
+        className="-mt-4"
         label="Company Number"
         placeholder="Company Number"
-        {...register('sku')}
+        {...register('companyNumber')}
         error={errors.sku?.message as string}
       />
       <Input
+        className="-mt-4"
         label="Contact Person First Name"
         placeholder="Contact Person First Name"
-        {...register('sku')}
+        {...register('contactfName')}
         error={errors.sku?.message as string}
       />
       <Input
+        className="-mt-4"
         label="Contact Person Last Name"
         placeholder="Contact Person Last Name"
-        {...register('sku')}
+        {...register('contactlName')}
         error={errors.sku?.message as string}
       />
       <Input
+        className="-mt-4"
         label="County"
         placeholder="County"
-        {...register('sku')}
+        {...register('county')}
         error={errors.sku?.message as string}
       />
 
       <Input
+        className="-mt-4"
         label="Sub County"
         placeholder="Sub County"
-        {...register('sku')}
+        {...register('subCounty')}
         error={errors.sku?.message as string}
       />
 
       <Input
+        className="-mt-4"
         label="Estate"
         placeholder="Estate"
-        {...register('sku')}
+        {...register('estate')}
         error={errors.sku?.message as string}
       />
     </FormGroup>

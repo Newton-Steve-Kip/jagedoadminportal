@@ -9,8 +9,6 @@ import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
-import Link from 'next/link';
-import { routes } from '@/config/routes';
 
 const statusOptions = [
   { label: 'Live', value: 'Live' },
@@ -37,74 +35,119 @@ export const getColumns = ({
   onHeaderCellClick,
 }: Columns) => [
   {
-    title: <HeaderCell title="NUMBER" />,
+    title: (
+      <div className="ps-3.5">
+        <Checkbox
+          title={'Select All'}
+          onChange={handleSelectAll}
+          checked={checkedItems.length === data.length}
+          className="cursor-pointer"
+        />
+      </div>
+    ),
+    dataIndex: 'checked',
+    key: 'checked',
+    width: 30,
+    render: (_: any, row: any) => (
+      <div className="inline-flex ps-3.5">
+        <Checkbox
+          aria-label={'ID'}
+          className="cursor-pointer"
+          checked={checkedItems.includes(row.id)}
+          {...(onChecked && { onChange: () => onChecked(row.id) })}
+        />
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="JOB ID" />,
     dataIndex: 'id',
     key: 'id',
     width: 90,
-    render: (id: string) => <Text>RE#{id}</Text>,
-  },
-  {
-    title: <HeaderCell title="Joined Date" className="uppercase" />,
-    dataIndex: 'date',
-    key: 'date',
-    width: 230,
-    render: (date: Date) => <DateCell date={date} />,
+    render: (id: string) => <Text>#{id}</Text>,
   },
 
   {
-    title: <HeaderCell title="Category" />,
-    dataIndex: 'category',
-    key: 'category',
+    title: <HeaderCell title="First Name" />,
+    dataIndex: 'firstName',
+    key: 'firstName',
     width: 200,
-    render: (category: string) => (
+    render: (firstName: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {category}
+        {firstName}
       </Text>
     ),
   },
   {
-    title: <HeaderCell title="Sub Category" />,
-    dataIndex: 'subCategory',
-    key: 'subCategory',
+    title: <HeaderCell title="Last Name" />,
+    dataIndex: 'lastName',
+    key: 'lastName',
     width: 200,
-    render: (subCategory: string) => (
+    render: (lastName: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {subCategory}
+        {lastName}
       </Text>
     ),
   },
   {
-    title: <HeaderCell title="Request Type" />,
-    dataIndex: 'requestType',
-    key: 'requestType',
-    width: 200,
-    render: (requestType: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {requestType}
-      </Text>
-    ),
+    title: <HeaderCell title="Phone Number" />,
+    dataIndex: 'phone',
+    key: 'phone',
+    width: 80,
+    render: (phone: number) => <Text>{phone}</Text>,
   },
   {
-    title: <HeaderCell title="Description" />,
-    dataIndex: 'description',
-    key: 'description',
-    width: 200,
-    render: (description: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {description}
-      </Text>
-    ),
+    title: <HeaderCell title="Email" />,
+    dataIndex: 'email',
+    key: 'email',
+    width: 120,
+    render: (email: string) => <Text>{email}</Text>,
+  },
+  {
+    title: <HeaderCell title="Gender" />,
+    dataIndex: 'gender',
+    key: 'gender',
+    width: 80,
+    render: (gender: string) => <Text>{gender}</Text>,
+  },
+  // {
+  //   title: <HeaderCell title="Category" />,
+  //   dataIndex: 'category',
+  //   key: 'category',
+  //   width: 260,
+  //   render: (category: string[]) => {
+  //     let print = category?.slice(0, 2);
+  //     let more = category.length - category.slice(0, 2).length;
+  //     return (
+  //       <div className="flex h-auto flex-wrap gap-2">
+  //         {print.map((item: string, index: number) => (
+  //           <span
+  //             key={index}
+  //             className="rounded-full bg-gray-100 px-2 py-1 text-xs"
+  //           >
+  //             {item}
+  //           </span>
+  //         ))}
+  //         <span className="rounded-full bg-gray-100 px-2 py-1 text-xs">
+  //           +{more}
+  //         </span>
+  //       </div>
+  //     );
+  //   },
+  // },
+  {
+    title: <HeaderCell title="Age" />,
+    dataIndex: 'age',
+    key: 'age',
+    width: 80,
+    render: (age: string) => <Text>{age}</Text>,
   },
   {
     title: <HeaderCell title="Location" />,
     dataIndex: 'location',
     key: 'location',
-    width: 200,
-    render: (location: string) => (
-      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {location}
-      </Text>
-    ),
+    width: 120,
+    render: (location: string) => <Text>{location}</Text>,
   },
 
   {
@@ -141,6 +184,17 @@ export const getColumns = ({
     width: 180,
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
+        <Tooltip size="sm" content={'Edit'} placement="top" color="invert">
+          <ActionIcon
+            as="span"
+            size="sm"
+            variant="outline"
+            aria-label={'Edit Appointment'}
+            className="hover:!border-gray-900 hover:text-gray-700"
+          >
+            <PencilIcon className="h-4 w-4" />
+          </ActionIcon>
+        </Tooltip>
         <Tooltip size="sm" content={'View'} placement="top" color="invert">
           <ActionIcon
             as="span"
@@ -149,9 +203,7 @@ export const getColumns = ({
             aria-label={'View Appointment'}
             className="hover:!border-gray-900 hover:text-gray-700"
           >
-            <Link href={routes.admin.requisitionDetails}>
-              <EyeIcon className="h-4 w-4" />
-            </Link>
+            <EyeIcon className="h-4 w-4" />
           </ActionIcon>
         </Tooltip>
         {/* <DeletePopover

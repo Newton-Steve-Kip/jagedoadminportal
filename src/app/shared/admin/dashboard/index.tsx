@@ -2,7 +2,7 @@ import AdminCards from './admin-cards';
 import SummaryWidget from './summary';
 import JobsWidget from '@/app/shared/admin/dashboard/promotional-sales';
 
-export default function AdminDashboard() {
+export default function RequisitionDetails() {
   return (
     <div className="@container">
       <div className="grid grid-cols-1 gap-6 @4xl:grid-cols-2 @7xl:grid-cols-12 3xl:gap-8">
@@ -39,12 +39,4 @@ export default function AdminDashboard() {
       </div>
     </div>
   );
-}
-
-{
-  /* <Link href={routes.eCommerce.createProduct} className="inline-flex">
-            <Button as="span" className="h-[38px] shadow md:h-10">
-              <PiPlusBold className="me-1 h-4 w-4" /> Add Product
-            </Button>
-          </Link> */
 }

@@ -44,120 +44,216 @@ import {
   PiCalendarDuotone,
   PiShapesDuotone,
   PiNewspaperClippingDuotone,
+  PiTrolleyDuotone,
+  PiWrenchDuotone,
+  PiFolderDuotone,
+  PiMoneyDuotone,
+  PiHouseDuotone,
 } from 'react-icons/pi';
 
 // Note: do not add href in the label object, it is rendering as label
 export const menuItems = [
   // label start
-  {
-    name: 'Overview',
-  },
-  //label end
-  {
-    name: 'File Manager',
-    href: '/',
-    icon: <PiFolder />,
-  },
+  // {
+  //   name: 'Overview',
+  // },
+  // //label end
+  // {
+  //   name: 'File Manager',
+  //   href: '/',
+  //   icon: <PiFolder />,
+  // },
+
+  // {
+  //   name: 'Job Board',
+  //   href: routes.jobBoard.dashboard,
+  //   icon: <PiShapesDuotone />,
+  //   badge: 'NEW',
+  // },
 
   {
-    name: 'Job Board',
-    href: routes.jobBoard.dashboard,
-    icon: <PiShapesDuotone />,
-    badge: 'NEW',
-  },
-
-  {
-    name: 'Admin',
+    name: 'Home',
     href: routes.admin.dashboard,
+    icon: <PiHouseDuotone />,
+  },
+  {
+    name: 'My Shop',
+    href: '#',
+    icon: <PiTrolleyDuotone />,
+  },
+
+  {
+    name: 'My Workspace',
+    href: '#',
+    icon: <PiWrenchDuotone />,
+  },
+  {
+    name: 'My Projects',
+    href: '#',
     icon: <PiBriefcaseDuotone />,
+  },
+
+  {
+    name: 'Sales',
+    href: '#',
+    icon: <PiMoneyDuotone />,
+  },
+
+  {
+    name: 'Profile',
+    href: routes.admin.dashboard,
+    icon: <PiUserCircleDuotone />,
     dropdownItems: [
       {
-        name: 'Dashboard',
-        href: routes.admin.dashboard,
-        badge: '',
-      },
-
-      {
-        name: 'Fundi Profile Creation',
+        name: 'Profile Creation',
         href: routes.admin.createFundiProfile,
         badge: '',
       },
 
       {
-        name: 'Edit Profile Creation',
+        name: 'Edit Profile',
         href: routes.admin.editFundiProfile,
-        badge: '',
-      },
-      {
-        name: 'Customer register',
-        href: routes.admin.customers,
-        badge: '',
-      },
-      {
-        name: 'Individual register',
-        href: routes.admin.individual,
-        badge: '',
-      },
-      // {
-      //   name: 'Individual register',
-      //   href: routes.admin.individual,
-      //   badge: '',
-      // },
-      {
-        name: 'Service provider register',
-        href: routes.admin.serviceProvider,
-        badge: '',
-      },
-      {
-        name: ' Organization register',
-        href: routes.admin.organization,
-        badge: '',
-      },
-      {
-        name: 'Admin Requisitions',
-        href: routes.admin.adminRequisitions,
-        badge: '',
-      },
-      {
-        name: 'Customer Requisitions',
-        href: routes.admin.customerRequisitions,
-        badge: '',
-      },
-      {
-        name: 'Requisition details',
-        href: routes.admin.assignServiceProvider,
-        badge: '',
-      },
-      {
-        name: 'Assign Service Providers',
-        href: routes.admin.addToServiceProviders,
         badge: '',
       },
     ],
   },
 
   {
-    name: 'Customers',
+    name: 'Registers',
     href: routes.admin.dashboard,
-    icon: <PiUserDuotone />,
+    icon: <PiFolderDuotone />,
     dropdownItems: [
       {
-        name: 'generate invoice',
-        href: routes.customers.generateInvoice,
+        name: 'Fundi Register',
+        href: routes.admin.fundis,
+        badge: '',
+      },
+
+      {
+        name: 'Customers Register',
+        href: routes.admin.customers,
+        badge: '',
+      },
+
+      {
+        name: 'Requisitions',
+        href: routes.admin.requisitions,
         badge: '',
       },
       {
-        name: 'invoice',
-        href: routes.customers.invoice,
+        name: 'Quotations',
+        href: routes.admin.quotations,
         badge: '',
       },
       {
-        name: 'View Requisition',
-        href: routes.customers.viewRequisition,
+        name: 'Requisitions with Quotations',
+        href: routes.admin.quotedRequisitions,
         badge: '',
       },
     ],
   },
+
+  // {
+  //   name: 'Admin',
+  //   href: routes.admin.dashboard,
+  //   icon: <PiBriefcaseDuotone />,
+  //   dropdownItems: [
+  //     // {
+  //     //   name: 'Dashboard',
+  //     //   href: routes.admin.dashboard,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Fundi Profile Creation',
+  //     //   href: routes.admin.createFundiProfile,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Edit Profile Creation',
+  //     //   href: routes.admin.editFundiProfile,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Customer register',
+  //     //   href: routes.admin.customers,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Individual register',
+  //     //   href: routes.admin.individual,
+  //     //   badge: '',
+  //     // },
+  //     // // {
+  //     // //   name: 'Individual register',
+  //     // //   href: routes.admin.individual,
+  //     // //   badge: '',
+  //     // // },
+  //     // {
+  //     //   name: 'Service provider register',
+  //     //   href: routes.admin.serviceProvider,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: ' Organization register',
+  //     //   href: routes.admin.organization,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Admin Requisitions',
+  //     //   href: routes.admin.requisitions,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Requisitions with Quotations',
+  //     //   href: routes.admin.quotedRequisitions,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Analyse Quotations',
+  //     //   href: routes.admin.analyzeQuotations,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Requisition details',
+  //     //   href: routes.admin.requisitionDetails,
+  //     //   badge: '',
+  //     // },
+  //     // {
+  //     //   name: 'Assign Service Providers',
+  //     //   href: routes.admin.addToServiceProviders,
+  //     //   badge: '',
+  //     // },
+
+  //   ],
+  // },
+
+  // {
+  //   name: 'Customers',
+  //   href: routes.admin.dashboard,
+  //   icon: <PiUserDuotone />,
+  //   dropdownItems: [
+  //     {
+  //       name: 'generate invoice',
+  //       href: routes.customers.generateInvoice,
+  //       badge: '',
+  //     },
+  //     {
+  //       name: 'invoice',
+  //       href: routes.customers.invoice,
+  //       badge: '',
+  //     },
+  //     {
+  //       name: 'Requisition Details',
+  //       href: routes.customers.requisitionDetails,
+  //       badge: '',
+  //     },
+  //     {
+  //       name: 'Requisitions',
+  //       href: routes.customers.requisitions,
+  //       badge: '',
+  //     },
+  //   ],
+  // },
   // {
   //   name: 'E-Commerce',
   //   href: routes.eCommerce.dashboard,
@@ -171,78 +267,78 @@ export const menuItems = [
   // },
 
   // // label start
-  {
-    name: 'Apps Kit',
-  },
+  // {
+  //   name: 'Apps Kit',
+  // },
   // // label end
-  {
-    name: 'E-Commerce',
-    href: '#',
-    icon: <PiShoppingCartDuotone />,
-    dropdownItems: [
-      {
-        name: 'Products',
-        href: routes.eCommerce.products,
-        badge: '',
-      },
-      {
-        name: 'Product Details',
-        href: routes.eCommerce.productDetails(DUMMY_ID),
-      },
-      {
-        name: 'Create Product',
-        href: routes.eCommerce.createProduct,
-      },
-      {
-        name: 'Edit Product',
-        href: routes.eCommerce.ediProduct(DUMMY_ID),
-      },
-      {
-        name: 'Categories',
-        href: routes.eCommerce.categories,
-      },
-      {
-        name: 'Create Category',
-        href: routes.eCommerce.createCategory,
-      },
-      {
-        name: 'Edit Category',
-        href: routes.eCommerce.editCategory(DUMMY_ID),
-      },
-      {
-        name: 'Orders',
-        href: routes.eCommerce.orders,
-      },
-      {
-        name: 'Order Details',
-        href: routes.eCommerce.orderDetails(DUMMY_ID),
-      },
-      {
-        name: 'Create Order',
-        href: routes.eCommerce.createOrder,
-      },
-      {
-        name: 'Edit Order',
-        href: routes.eCommerce.editOrder(DUMMY_ID),
-      },
-      {
-        name: 'Reviews',
-        href: routes.eCommerce.reviews,
-      },
-      {
-        name: 'Shop',
-        href: routes.eCommerce.shop,
-      },
-      {
-        name: 'Cart',
-        href: routes.eCommerce.cart,
-      },
-      {
-        name: 'Checkout & Payment',
-        href: routes.eCommerce.checkout,
-      },
-    ],
-  },
+  // {
+  //   name: 'E-Commerce',
+  //   href: '#',
+  //   icon: <PiShoppingCartDuotone />,
+  //   dropdownItems: [
+  //     {
+  //       name: 'Products',
+  //       href: routes.eCommerce.products,
+  //       badge: '',
+  //     },
+  //     {
+  //       name: 'Product Details',
+  //       href: routes.eCommerce.productDetails(DUMMY_ID),
+  //     },
+  //     {
+  //       name: 'Create Product',
+  //       href: routes.eCommerce.createProduct,
+  //     },
+  //     {
+  //       name: 'Edit Product',
+  //       href: routes.eCommerce.ediProduct(DUMMY_ID),
+  //     },
+  //     {
+  //       name: 'Categories',
+  //       href: routes.eCommerce.categories,
+  //     },
+  //     {
+  //       name: 'Create Category',
+  //       href: routes.eCommerce.createCategory,
+  //     },
+  //     {
+  //       name: 'Edit Category',
+  //       href: routes.eCommerce.editCategory(DUMMY_ID),
+  //     },
+  //     {
+  //       name: 'Orders',
+  //       href: routes.eCommerce.orders,
+  //     },
+  //     {
+  //       name: 'Order Details',
+  //       href: routes.eCommerce.orderDetails(DUMMY_ID),
+  //     },
+  //     {
+  //       name: 'Create Order',
+  //       href: routes.eCommerce.createOrder,
+  //     },
+  //     {
+  //       name: 'Edit Order',
+  //       href: routes.eCommerce.editOrder(DUMMY_ID),
+  //     },
+  //     {
+  //       name: 'Reviews',
+  //       href: routes.eCommerce.reviews,
+  //     },
+  //     {
+  //       name: 'Shop',
+  //       href: routes.eCommerce.shop,
+  //     },
+  //     {
+  //       name: 'Cart',
+  //       href: routes.eCommerce.cart,
+  //     },
+  //     {
+  //       name: 'Checkout & Payment',
+  //       href: routes.eCommerce.checkout,
+  //     },
+  //   ],
+  // },
   // {
   //   name: 'Support',
   //   href: '#',
@@ -339,15 +435,15 @@ export const menuItems = [
   //   icon: <PiEnvelopeDuotone />,
   // },
   // // label start
-  {
-    name: 'Forms',
-  },
+  // {
+  //   name: 'Forms',
+  // },
   // // label end
-  {
-    name: 'Account Settings',
-    href: routes.forms.profileSettings,
-    icon: <PiUserGearDuotone />,
-  },
+  // {
+  //   name: 'Account Settings',
+  //   href: routes.forms.profileSettings,
+  //   icon: <PiUserGearDuotone />,
+  // },
   // {
   //   name: 'Notification Preference',
   //   href: routes.forms.notificationPreference,
