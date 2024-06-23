@@ -159,7 +159,7 @@ export default function AdminCards({ className }: { className?: string }) {
       )}
     >
       {eComDashboardStatData.map((stat) => (
-        <Link key={stat.title + stat.id} href="#">
+        <Link key={stat.title + stat.id} href={routes.comingSoon}>
           <CategoriesCard
             metric={stat.metric}
             metricClassName="lg:text-[18px] text-sm" // Adjust metric text size

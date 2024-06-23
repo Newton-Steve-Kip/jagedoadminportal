@@ -66,7 +66,7 @@ export const menuItems = [
 
   // {
   //   name: 'Job Board',
-  //   href: routes.jobBoard.dashboard,
+  //   href: routes.jobBoard.dashboard
   //   icon: <PiShapesDuotone />,
   //   badge: 'NEW',
   // },
@@ -78,24 +78,24 @@ export const menuItems = [
   },
   {
     name: 'My Shop',
-    href: '#',
+    href: routes.comingSoon,
     icon: <PiTrolleyDuotone />,
   },
 
   {
     name: 'My Workspace',
-    href: '#',
+    href: routes.comingSoon,
     icon: <PiWrenchDuotone />,
   },
   {
     name: 'My Projects',
-    href: '#',
+    href: routes.comingSoon,
     icon: <PiBriefcaseDuotone />,
   },
 
   {
     name: 'Sales',
-    href: '#',
+    href: routes.comingSoon,
     icon: <PiMoneyDuotone />,
   },
 
@@ -574,7 +574,7 @@ export const menuItems = [
 
   // // label start
   // {
-  //   name: 'Authentication',
+  //   name: 'aentication',
   // },
   // // label end
 
