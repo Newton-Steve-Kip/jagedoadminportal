@@ -32,6 +32,8 @@ const QuillEditor = dynamic(() => import('@/components/ui/quill-editor'), {
 export default function CustomTextArea2({ className }: { className?: string }) {
   const router = useRouter();
   const onSubmit: SubmitHandler<PersonalInfoFormTypes> = (data) => {
+    toast.success(<Text as="b">Added to Service Providers!</Text>);
+
     router.push(routes.admin.dashboard);
 
     // toast.success(<Text as="b">Successfully added!</Text>);

@@ -54,6 +54,23 @@ export const jobData = [
   },
 ];
 
+export const quotationReportData = [
+  {
+    item: '1',
+    name: 'Kennedy Nyongesa',
+    phone: '254123345532',
+    level: 'Master Fundi',
+    rating: '3324',
+  },
+  {
+    item: '2',
+    name: 'Paul Mwangangi',
+    phone: '254733456673',
+    level: 'Skilled Fundi',
+    rating: '8',
+  },
+];
+
 export const quotationData = [
   {
     id: '3324',

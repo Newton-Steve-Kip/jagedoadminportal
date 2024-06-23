@@ -16,6 +16,8 @@ import {
   PiFolderDuotone,
   PiTrolleyDuotone,
   PiMoneyDuotone,
+  PiComputerTowerDuotone,
+  PiDesktopDuotone,
 } from 'react-icons/pi';
 import { BarChart, Bar, ResponsiveContainer } from 'recharts';
 import CategoriesCard from '@/components/cards/categories-card';
@@ -114,7 +116,7 @@ const eComDashboardStatData = [
   },
   {
     id: '2',
-    icon: <PiWrenchDuotone className="h-6 w-6" />,
+    icon: <PiDesktopDuotone className="h-6 w-6" />,
     title: 'Workspace',
     metric: 'My Workspace',
     increased: true,
@@ -157,7 +159,7 @@ export default function AdminCards({ className }: { className?: string }) {
       )}
     >
       {eComDashboardStatData.map((stat) => (
-        <Link key={stat.title + stat.id} href={routes.eCommerce.createProduct}>
+        <Link key={stat.title + stat.id} href="#">
           <CategoriesCard
             metric={stat.metric}
             metricClassName="lg:text-[18px] text-sm" // Adjust metric text size

@@ -107,17 +107,14 @@ export default function EditCustomersForm() {
           </Link>
         </div>
 
-        <div className="space-y-6 @5xl:col-span-8 @5xl:space-y-10 @6xl:col-span-7">
+        <div className="x space-y-6 @5xl:col-span-8 @5xl:space-y-10 @6xl:col-span-7">
           <div className="">
             <div className="mb-3.5 @5xl:mb-5">
               <Title as="h3" className="text-base font-semibold @7xl:text-lg">
                 Contact Details
               </Title>
             </div>
-            <div className="space-y-4 rounded-xl border border-muted px-4 py-2 @5xl:space-y-7 @5xl:p-7">
-              <div className="flex justify-between font-medium">
-                Skill <span>Architect</span>
-              </div>
+            <div className="-mt-2 space-y-4 rounded-xl border border-muted px-4 py-2 @5xl:space-y-7 @5xl:p-7">
               <div className="flex justify-between font-medium">
                 First Name <span>Olive</span>
               </div>

@@ -13,7 +13,7 @@ enum MODE {
 export const siteConfig = {
   title: 'Jagedo',
   description: ``,
-  logo: '',
+  logo: Japageo_01,
   icon: Japageo_01,
   mode: MODE.LIGHT,
   layout: LAYOUT_OPTIONS.HYDROGEN,

@@ -18,15 +18,15 @@ const pageHeader = {
   title: 'View Job',
   breadcrumb: [
     {
-      href: routes.eCommerce.dashboard,
-      name: 'E-Commerce',
+      href: routes.admin.dashboard,
+      name: 'Home',
     },
     {
-      href: routes.eCommerce.products,
-      name: 'Products',
+      href: routes.admin.requisitions,
+      name: 'All requisitions',
     },
     {
-      name: 'List',
+      name: 'View Requisition',
     },
   ],
 };

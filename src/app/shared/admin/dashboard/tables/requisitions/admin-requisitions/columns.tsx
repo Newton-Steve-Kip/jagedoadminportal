@@ -128,7 +128,7 @@ export const getColumns = ({
     onHeaderCell: () => onHeaderCellClick('status'),
     dataIndex: 'status',
     key: 'status',
-    width: 100,
+    width: 50,
     render: (status: string) => {
       return <StatusSelect selectItem={status} />;
     },
@@ -138,7 +138,7 @@ export const getColumns = ({
     title: <HeaderCell title="Actions" />,
     dataIndex: 'action',
     key: 'action',
-    width: 180,
+    width: 100,
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
         <Tooltip size="sm" content={'View'} placement="top" color="invert">

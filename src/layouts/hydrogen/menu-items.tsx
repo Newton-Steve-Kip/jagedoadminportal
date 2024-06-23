@@ -124,6 +124,16 @@ export const menuItems = [
     icon: <PiFolderDuotone />,
     dropdownItems: [
       {
+        name: 'Requisitions',
+        href: routes.admin.requisitions,
+        badge: '',
+      },
+      {
+        name: 'Quotations',
+        href: routes.admin.quotations,
+        badge: '',
+      },
+      {
         name: 'Fundi Register',
         href: routes.admin.fundis,
         badge: '',
@@ -135,16 +145,6 @@ export const menuItems = [
         badge: '',
       },
 
-      {
-        name: 'Requisitions',
-        href: routes.admin.requisitions,
-        badge: '',
-      },
-      {
-        name: 'Quotations',
-        href: routes.admin.quotations,
-        badge: '',
-      },
       {
         name: 'Requisitions with Quotations',
         href: routes.admin.quotedRequisitions,
@@ -253,6 +253,7 @@ export const menuItems = [
   //       badge: '',
   //     },
   //   ],
+  // },
   // },
   // {
   //   name: 'E-Commerce',

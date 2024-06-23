@@ -9,11 +9,12 @@ export const routes = {
     createFundiProfile: '/admin/profile/create-profile/fundi',
     createContractorProfile: '/admin/profile/create-profile/contractor',
     createProfessionalProfile: '/admin/profile/create-profile/professional',
-    editCustomerProfile: '/admin/profile/create-profile/customers',
+    editCustomerProfile: '/admin/profile/edit-profile/customers',
     editFundiProfile: '/admin/profile/edit-profile/fundi',
     editContractorProfile: '/admin/profile/edit-profile/contractor',
     editProfessionalProfile: '/admin/profile/edit-profile/professional',
     addToServiceProviders: '/admin/add-to-service-providers',
+    editDetails: '/admin/profile/edit-profile/edit-details',
 
     //Registers
     registers: '/admin/registers',
@@ -32,6 +33,9 @@ export const routes = {
 
     //Requisition details
     requisitionDetails: '/admin/requisition-details',
+
+    //Generate Report
+    generateReport: '/admin/generate-report',
   },
 
   customers: {

@@ -35,10 +35,9 @@ export default function CustomTextArea({ className }: { className?: string }) {
   const onSubmit: SubmitHandler<PersonalInfoFormTypes> = () => {
     router.push(routes.admin.addToServiceProviders);
 
-    toast.success(<Text as="b">Successfully added!</Text>);
-    console.log('Profile settings data ->', {
-      // ...data,
-    });
+    // console.log('Profile settings data ->', {
+    //   // ...data,
+    // });
   };
 
   return (

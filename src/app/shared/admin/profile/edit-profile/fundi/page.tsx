@@ -68,7 +68,7 @@ export default function EditFundiForm() {
         <div className="space-y-7 pt-8 @container @5xl:col-span-4 @5xl:space-y-10 @5xl:pt-0 @6xl:col-span-3">
           <WidgetCard
             className="mb-7.5 @5xl:mb-5"
-            title="Customers Details"
+            title="Fundi Details"
             childrenWrapperClass="py-5 @5xl:py-8 flex"
           >
             <div className="relative aspect-square h-16 w-16 shrink-0 @5xl:h-20 @5xl:w-20">
@@ -98,7 +98,7 @@ export default function EditFundiForm() {
           </WidgetCard>
 
           <Link
-            href={routes.eCommerce.createProduct}
+            href={routes.admin.editDetails}
             className="inline-flex flex-grow"
           >
             <Button as="span" className="h-[38px] shadow md:h-10">
@@ -114,7 +114,7 @@ export default function EditFundiForm() {
                 Contact Details
               </Title>
             </div>
-            <div className="space-y-4 rounded-xl border border-muted px-4 py-2 @5xl:space-y-7 @5xl:p-7">
+            <div className=" -mt-2 space-y-4 rounded-xl border border-muted px-4 py-2 @5xl:space-y-7 @5xl:p-7">
               <div className="flex justify-between font-medium">
                 Skill <span>Architect</span>
               </div>

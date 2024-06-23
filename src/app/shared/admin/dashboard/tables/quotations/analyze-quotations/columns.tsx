@@ -143,9 +143,6 @@ export const getColumns = ({
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
         <Button size="sm"> Evaluate</Button>
-        <Button size="sm" className="p-2">
-          Generate Report
-        </Button>
       </div>
     ),
   },
