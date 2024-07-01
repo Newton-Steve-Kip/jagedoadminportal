@@ -1,4 +1,3 @@
-import CustomersTable from '@/app/shared/admin/dashboard/tables/customers';
 import FundisTable from '@/app/shared/admin/dashboard/tables/fundi';
 
 import { metaObject } from '@/config/site.config';

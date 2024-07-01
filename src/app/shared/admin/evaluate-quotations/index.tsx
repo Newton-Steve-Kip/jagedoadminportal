@@ -20,7 +20,7 @@ const data = [
   //   },
 ];
 
-export default function ViewRequisition() {
+export default function EvaluateQuotations() {
   return (
     <div className="grid items-start rounded-xl border border-gray-300 p-5 @2xl:grid-cols-2 @3xl:grid-cols-3 @3xl:p-8 @5xl:grid-cols-4">
       <ul className="grid gap-3 @3xl:col-span-full @3xl:mb-2 @5xl:col-span-1 @5xl:mb-0">

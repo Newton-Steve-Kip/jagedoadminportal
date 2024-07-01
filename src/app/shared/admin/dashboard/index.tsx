@@ -1,3 +1,7 @@
+import JobSlider from '../cards/job-slider';
+import TractionCard from '../cards/traction';
+import JobsCard from '../cards/traction';
+import UsersTraction from '../cards/users-traction';
 import AdminCards from './admin-cards';
 import SummaryWidget from './summary';
 import JobsWidget from '@/app/shared/admin/dashboard/promotional-sales';
@@ -33,9 +37,11 @@ export default function RequisitionDetails() {
         
         </WelcomeBanner> */}
 
-        <AdminCards className="py-5 @2xl:grid-cols-3  @3xl:gap-6 @4xl:col-span-2 @4xl:grid-cols-4 @7xl:col-span-8" />
-        <SummaryWidget className="h-[300px] @sm:h-[320px] @7xl:col-span-4 @7xl:col-start-9 @7xl:row-start-1 @7xl:row-end-3 @7xl:h-full" />
-        <JobsWidget className="h-[300px] @sm:h-[320px] @4xl:col-start-2  @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" />
+        <AdminCards className="border-none py-5  @2xl:grid-cols-3 @3xl:gap-6 @4xl:col-span-2 @4xl:grid-cols-4 @7xl:col-span-8" />
+        <JobSlider className="h-[300px] @sm:h-[320px]   @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" />
+        {/* <SummaryWidget className="h-[300px] @sm:h-[320px] @7xl:col-span-4 @7xl:col-start-9 @7xl:row-start-1 @7xl:row-end-3 @7xl:h-full" /> */}
+        {/* <TractionCard className="h-[300px] @sm:h-[320px] @4xl:col-start-2  @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" /> */}
+        <UsersTraction className="h-[300px] @sm:h-[320px]   @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" />
       </div>
     </div>
   );

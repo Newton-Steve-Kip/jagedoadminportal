@@ -3,7 +3,7 @@ import { routes } from '@/config/routes';
 import PageHeader from '@/app/shared/commons/page-header';
 import Link from 'next/link';
 import OrderView from '@/app/shared/admin/order/order-view';
-import EditContractorForm from '@/app/shared/admin/profile/edit-profile/contractor/page';
+import EditContractorForm from '@/app/shared/admin/profile/edit-profile/contractor';
 
 export default function OrderDetailsPage({ params }: any) {
   const pageHeader = {

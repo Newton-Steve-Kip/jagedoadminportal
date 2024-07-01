@@ -1,4 +1,4 @@
-import OrganizationsTable from '@/app/shared/admin/dashboard/tables/organization';
+import OrganizationsTable from '@/app/shared/admin/dashboard/tables/customers/organization';
 import { metaObject } from '@/config/site.config';
 
 export const metadata = {

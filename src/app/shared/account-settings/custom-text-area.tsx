@@ -63,14 +63,11 @@ export default function CustomTextArea({ className }: { className?: string }) {
               <FormGroup
                 title=""
                 description=""
-                className="pt-2 @2xl:pt-4 @3xl:grid-cols-12 @3xl:pt-1"
+                className="@3xl:grid-cols-12 "
               />
 
-              <div className="mb-10 grid gap-7 divide-y divide-dashed divide-gray-200 @2xl:gap-9 @3xl:gap-11">
-                <FormGroup
-                  title="Notes"
-                  className="pt-7 @2xl:pt-9 @3xl:grid-cols-12 @3xl:pt-11"
-                >
+              <div className="mb-5 grid gap-3 divide-y divide-dashed divide-gray-200 @2xl:gap-5 @3xl:gap-5">
+                <FormGroup title="Notes" className="pt-2  @3xl:grid-cols-12 ">
                   <Controller
                     control={control}
                     name="bio"

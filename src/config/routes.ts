@@ -9,7 +9,7 @@ export const routes = {
     createFundiProfile: '/admin/profile/create-profile/fundi',
     createContractorProfile: '/admin/profile/create-profile/contractor',
     createProfessionalProfile: '/admin/profile/create-profile/professional',
-    editCustomerProfile: '/admin/profile/edit-profile/customers',
+    editCustomerProfile: '/admin/profile/edit-profile/customer',
     editFundiProfile: '/admin/profile/edit-profile/fundi',
     editContractorProfile: '/admin/profile/edit-profile/contractor',
     editProfessionalProfile: '/admin/profile/edit-profile/professional',
@@ -17,12 +17,12 @@ export const routes = {
     editDetails: '/admin/profile/edit-profile/edit-details',
 
     //Registers
-    registers: '/admin/registers',
     customers: '/admin/registers/customer',
-    individual: '/admin/registers/individual',
-    organization: '/admin/registers/organization',
-    serviceProvider: '/admin/registers/service-provider',
-    fundis: '/admin/registers/fundi',
+    individual: '/admin/registers/customer/individual',
+    organization: '/admin/registers/customer/organization',
+    fundi: '/admin/registers/fundi',
+    professional: '/admin/registers/professional',
+    contractor: '/admin/registers/contractor',
     requisitions: '/admin/registers/requisitions',
     customerRequisitions: '/admin/registers/requisitions/customer',
     assignServiceProvider: '/admin/service-providers/assign-service-provider',
@@ -30,6 +30,11 @@ export const routes = {
     quotedRequisitions: '/admin/registers/requisitions/quoted-requisitions',
     analyzeQuotations: '/admin/registers/quotations/analyze-quotations',
     evaluate: '/admin/quotations/evaluateQuotations',
+
+    //Jobs
+    active: '/admin/registers/jobs/active',
+    ongoing: '/admin/registers/jobs/ongoing',
+    completed: '/admin/registers/jobs/completed',
 
     //Requisition details
     requisitionDetails: '/admin/requisition-details',

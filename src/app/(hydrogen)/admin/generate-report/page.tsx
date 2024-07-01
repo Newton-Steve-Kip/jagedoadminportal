@@ -1,6 +1,4 @@
-import CustomersTable from '@/app/shared/admin/dashboard/tables/customers';
-import QuotationReportTable from '@/app/shared/admin/dashboard/tables/quoatationreport';
-import QuotationReport from '@/app/shared/admin/dashboard/tables/quoatationreport';
+import QuotationReportTable from '@/app/shared/admin/dashboard/tables/quotation-report';
 import EvaluateQuoatations from '@/app/shared/admin/evaluate-quotations';
 import PageHeader from '@/app/shared/commons/page-header';
 import ViewRequisition from '@/app/shared/customers/requisitions/requisition-details';
@@ -34,13 +32,13 @@ export default function GenerateReport() {
 
       <div className="mt-2 flex flex-col gap-y-6 @container sm:gap-y-10">
         <EvaluateQuoatations />
-        <QuotationReportTable />
+        <QuotationReportTable className="-mt-2" />
         <Link
           href={routes.admin.dashboard}
           className="  grid grid-cols-1 @lg:w-auto"
         >
           <Button as="span" className="w-full @lg:w-auto">
-            Submit
+            Generate Report
           </Button>
         </Link>
       </div>

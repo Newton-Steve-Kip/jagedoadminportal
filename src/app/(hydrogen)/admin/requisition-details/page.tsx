@@ -9,6 +9,9 @@ import CustomerDetailsCard from '@/app/shared/logistics/dashboard/cutomer-detail
 import JobDetailsCard from '@/app/shared/logistics/dashboard/job-details';
 import CustomTextArea2 from '@/app/shared/account-settings/custom-text-area2';
 import CustomTextArea from '@/app/shared/account-settings/custom-text-area';
+import JobsWidget from '@/app/shared/ecommerce/dashboard/promotional-sales';
+import JobStats from '@/app/shared/job-dashboard/job-stats';
+import JobDetails from '@/app/shared/admin/dashboard/tables/requisitions/requisition-details/job-details';
 
 export const metadata = {
   ...metaObject('View Job'),
@@ -39,8 +42,11 @@ export default function RequisitionDetailsPage() {
         breadcrumb={pageHeader.breadcrumb}
       ></PageHeader>
 
-      <CustomerDetailsCard className="mt-6" />
-      <JobDetailsCard className="mt-6" />
+      <CustomerDetailsCard className="mt-2" />
+      {/* <JobDetailsCard className="mt-6" /> */}
+      <div className="mt-2 mt-6 flex flex-col gap-y-6 @container sm:gap-y-10">
+        <JobDetails />
+      </div>
       <CustomTextArea className="mt-6" />
     </>
   );

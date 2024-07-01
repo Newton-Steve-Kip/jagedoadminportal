@@ -18,6 +18,7 @@ import {
   PiMoneyDuotone,
   PiComputerTowerDuotone,
   PiDesktopDuotone,
+  PiProjectorScreenChartDuotone,
 } from 'react-icons/pi';
 import { BarChart, Bar, ResponsiveContainer } from 'recharts';
 import CategoriesCard from '@/components/cards/categories-card';
@@ -104,7 +105,7 @@ const revenueData = [
 const eComDashboardStatData = [
   {
     id: '1',
-    icon: <PiEnvelopeDuotone className="h-6 w-6" />,
+    icon: <PiFolderDuotone className="h-6 w-6 text-blue-500" />,
     title: 'Projects',
     metric: 'My Projects',
     increased: true,
@@ -116,7 +117,7 @@ const eComDashboardStatData = [
   },
   {
     id: '2',
-    icon: <PiDesktopDuotone className="h-6 w-6" />,
+    icon: <PiDesktopDuotone className="h-6 w-6 text-red-500" />,
     title: 'Workspace',
     metric: 'My Workspace',
     increased: true,
@@ -128,7 +129,7 @@ const eComDashboardStatData = [
   },
   {
     id: '3',
-    icon: <PiMoneyDuotone className="h-6 w-6" />,
+    icon: <PiMoneyDuotone className="h-6 w-6 text-green-500" />,
     title: 'Sales Dashboard',
     metric: 'Sales',
     increased: true,
@@ -140,7 +141,7 @@ const eComDashboardStatData = [
   },
   {
     id: '4',
-    icon: <PiTrolleyDuotone className="h-6 w-6" />,
+    icon: <PiTrolleyDuotone className="h-6 w-6 text-yellow-500" />,
     title: 'Shop Dashboard',
     metric: 'My Shop',
     percentage: '+32.40',
@@ -162,10 +163,10 @@ export default function AdminCards({ className }: { className?: string }) {
         <Link key={stat.title + stat.id} href={routes.comingSoon}>
           <CategoriesCard
             metric={stat.metric}
-            metricClassName="lg:text-[18px] text-sm" // Adjust metric text size
+            metricClassName="lg:text-[18px] text-sm"
             icon={stat.icon}
             iconClassName={cn(
-              '[&>svg]:w-8 [&>svg]:h-8 lg:[&>svg]:w-10 lg:[&>svg]:h-10 w-auto h-auto p-0 bg-transparent -mx-1.5', // Adjust icon size
+              '[&>svg]:w-8 [&>svg]:h-8 lg:[&>svg]:w-10 lg:[&>svg]:h-10 w-auto h-auto p-0 bg-transparent -mx-1.5',
               stat.id === '1' &&
                 '[&>svg]:w-7 [&>svg]:h-7 lg:[&>svg]:w-9 lg:[&>svg]:h-9',
               stat.style

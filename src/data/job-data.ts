@@ -1,3 +1,5 @@
+import { Description } from '@headlessui/react/dist/components/description/description';
+
 export const requisitions = [
   {
     id: '3416',
@@ -26,7 +28,7 @@ export const jobData = [
     id: '3324',
     date: '2022-11-10T06:22:01.621Z',
     firstName: 'Steve',
-    lastName: 'Mumo',
+    lastName: 'Limo',
     phone: '0712345678',
     email: 'steve@gmail.com',
     gender: 'Male',
@@ -54,13 +56,53 @@ export const jobData = [
   },
 ];
 
+export const completeJobs = [
+  {
+    id: '3324',
+    completionDate: '2022-11-14T06:22:01.621Z',
+    requisitionDate: '2022-11-02T06:22:01.621Z',
+    description: 'fixing a water pump',
+    specification: 'pedrollo pump 3-60',
+    fundi: 'Hassan Rajab',
+    review: 'Reviewed',
+  },
+  {
+    id: '3325',
+    completionDate: '2022-09-04T06:22:01.621Z',
+    requisitionDate: '2022-08-02T06:22:01.621Z',
+    description: 'fixing a water pump',
+    specification: 'pedrollo pump 3-60',
+    fundi: 'Hassan Rajab',
+    review: 'Unreviewed',
+  },
+];
+
+export const activeJobs = [
+  {
+    id: '3324',
+    requisitionDate: '2022-11-02T06:22:01.621Z',
+    description: 'fixing a water pump',
+    specification: 'drill bit ',
+    fundi: 'Hassan Rajab',
+    status: 'Ongoing',
+  },
+  {
+    id: '3325',
+    requisitionDate: '2022-08-02T06:22:01.621Z',
+    description: 'fixing a water pump',
+    specification: 'pedrollo pump 3-60',
+    fundi: 'Francis Oduor',
+    status: 'Completed',
+  },
+];
+
 export const quotationReportData = [
   {
     item: '1',
     name: 'Kennedy Nyongesa',
     phone: '254123345532',
     level: 'Master Fundi',
-    rating: '3324',
+    rating: '7',
   },
   {
     item: '2',
@@ -82,7 +124,7 @@ export const quotationData = [
     amount: 2500,
     rating: 7,
     score: 6,
-    status: 'Closed',
+    status: 'Reviewed',
   },
   {
     id: '3327',
@@ -94,7 +136,7 @@ export const quotationData = [
     amount: 2500,
     rating: 7,
     score: 6,
-    status: 'Closed',
+    status: 'Unreviewed',
   },
 ];
 
@@ -118,5 +160,15 @@ export const quotedRequisitionsData = [
     description: 'Designing 3 bedroom bungalow',
     category: 'Fundi',
     status: 'Under Review',
+  },
+  {
+    id: '3337',
+    date: '2022-11-10T06:22:01.621Z',
+    rfqType: 'Emergency',
+    subCategory: 'Electrician',
+    location: 'KE,Rift Valley Narok',
+    description: 'Fixing electric fault',
+    category: 'Fundi',
+    status: 'Unreviewed',
   },
 ];

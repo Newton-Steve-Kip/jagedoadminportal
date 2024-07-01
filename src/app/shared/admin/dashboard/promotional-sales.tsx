@@ -11,22 +11,27 @@ import {
 } from 'recharts';
 import cn from '@/utils/class-names';
 import { useMedia } from '@/hooks/use-media';
+import Link from 'next/link';
+import { routes } from '@/config/routes';
 
 const data = [
   {
     name: 'Requisitions',
     sales: 31,
     fill: '#FF0000',
+    link: routes.admin.requisitions, // Add links for each segment
   },
   {
     name: 'Quotations',
     sales: 26,
     fill: '#E1306C',
+    link: routes.admin.quotations,
   },
   {
     name: 'Completed Jobs',
     sales: 15,
     fill: '#1DA1F2',
+    link: routes.admin.quotations,
   },
 ];
 
@@ -37,6 +42,7 @@ export default function PromotionalSales({
 }) {
   const isMobile = useMedia('(max-width: 300px)', true);
   const [startDate, setStartDate] = useState<Date>(new Date());
+
   return (
     <WidgetCard
       title={'Jobs'}
@@ -77,6 +83,18 @@ export default function PromotionalSales({
               className="[&_.recharts-radial-bar-background-sector]:fill-gray-100"
             />
             <Legend iconSize={10} layout="vertical" verticalAlign="top" />
+            {data.map((entry, index) => (
+              <Link key={index} href={entry.link}>
+                <a>
+                  <RadialBar
+                    dataKey="sales"
+                    startAngle={90 + index * 120}
+                    endAngle={90 + (index + 1) * 120}
+                    fill={entry.fill}
+                  />
+                </a>
+              </Link>
+            ))}
           </RadialBarChart>
         </ResponsiveContainer>
       </div>

@@ -3,12 +3,13 @@
 import { Title, Text } from 'rizzui';
 import WidgetCard from '@/components/cards/widget-card';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import Link from 'next/link'; // Import Link from Next.js for navigation
 
 const data = [
-  { name: 'Referral', value: 2560 },
-  { name: 'Social Media', value: 2150 },
-  { name: 'Email', value: 2780 },
-  { name: 'Google', value: 2000 },
+  { name: 'Referral', value: 2560, link: '/' },
+  { name: 'Social Media', value: 2150, link: '/' },
+  { name: 'Email', value: 2780, link: '/' },
+  { name: 'Google', value: 2000, link: '/' },
 ];
 const COLORS = ['#B92E5D', '#6D1A36', '#D68585', '#FFD1D1'];
 
@@ -17,6 +18,13 @@ export default function TopTrafficSource({
 }: {
   className?: string;
 }) {
+  const handleClick = (entry: any) => {
+    // Redirect to the specified link when a segment is clicked
+    if (entry && entry.payload && entry.payload.link) {
+      window.location.href = entry.payload.link;
+    }
+  };
+
   return (
     <WidgetCard title={'Top Traffic Source'} rounded="lg" className={className}>
       <div className="h-96 w-full @sm:py-3">
@@ -29,6 +37,7 @@ export default function TopTrafficSource({
               fill="#6D1A36"
               stroke="rgba(0,0,0,0)"
               dataKey="value"
+              onClick={handleClick}
             >
               {data.map((_, index) => (
                 <Cell

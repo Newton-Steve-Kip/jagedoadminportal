@@ -80,13 +80,6 @@ export default function JobDetailsCard({ className }: { className?: string }) {
       className={className}
       title="Job Details"
       headerClassName="mb-2 @2xl:mb-5"
-      action={
-        <DropdownAction
-          options={viewOptions}
-          onChange={handleChange}
-          dropdownClassName="!z-0"
-        />
-      }
     >
       <SimpleBar>
         <div className="grid grid-flow-col gap-5 pb-1">

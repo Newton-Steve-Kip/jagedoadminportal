@@ -10,7 +10,7 @@ interface ProductMediaProps {
   className?: string;
 }
 
-export default function ProductMedia({ className }: ProductMediaProps) {
+export default function RequiredDetails({ className }: ProductMediaProps) {
   const {
     getValues,
     setValue,

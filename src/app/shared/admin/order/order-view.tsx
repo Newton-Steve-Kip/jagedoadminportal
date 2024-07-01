@@ -18,7 +18,7 @@ import { formatDate } from '@/utils/format-date';
 import usePrice from '@/hooks/use-price';
 import { routes } from '@/config/routes';
 import Link from 'next/link';
-import CustomersTable from '../dashboard/tables/customers';
+import CustomersTable from '../dashboard/tables/customers/organization';
 
 function WidgetCard({
   title,

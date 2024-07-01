@@ -1,19 +1,22 @@
 import Link from 'next/link';
 import { PiPlusBold } from 'react-icons/pi';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button, Text } from 'rizzui';
 import PageHeader from '@/app/shared/commons/page-header';
 import ReviewsTable from '@/app/shared/ecommerce/review/table';
 import { metaObject } from '@/config/site.config';
 import AssignServiceProvidersTable from '@/app/shared/admin/dashboard/tables/assign-service-providers';
 import CustomTextArea2 from '@/app/shared/account-settings/custom-text-area2';
+import toast from 'react-hot-toast';
+import { SubmitHandler } from 'react-hook-form';
+import { PersonalInfoFormTypes } from '@/utils/validators/personal-info.schema';
 
 export const metadata = {
-  ...metaObject('Reviews'),
+  ...metaObject('Assign Service Providers'),
 };
 
 const pageHeader = {
-  title: 'Add to Service Providers ',
+  title: 'Assign Service Providers ',
   breadcrumb: [
     {
       href: routes.admin.dashboard,
@@ -28,6 +31,12 @@ const pageHeader = {
     },
   ],
 };
+
+// {
+//   className,
+// }: {
+//   className?: string;
+// }
 
 export default function AddtoServiceProviders() {
   return (

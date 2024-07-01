@@ -43,35 +43,21 @@ export default function CustomTextArea2({ className }: { className?: string }) {
   };
 
   return (
-    <WidgetCard
-      rounded="lg"
-      className={className}
-      headerClassName="mb-2 @2xl:mb-5"
+    <Form
+      onSubmit={onSubmit}
+      className="@container"
+      useFormProps={{
+        mode: 'onChange',
+        defaultValues,
+      }}
     >
-      <Form
-        onSubmit={onSubmit}
-        className="@container"
-        useFormProps={{
-          mode: 'onChange',
-          defaultValues,
-        }}
-      >
-        {({ control, formState: { errors } }) => {
-          return (
-            <>
-              <FormGroup
-                title=""
-                description=""
-                className="pt-2 @2xl:pt-4 @3xl:grid-cols-12 @3xl:pt-1"
-              />
-              <FormFooter
-                altBtnText="Cancel"
-                submitBtnText="Add to Service Providers"
-              />
-            </>
-          );
-        }}
-      </Form>
-    </WidgetCard>
+      {({ control, formState: { errors } }) => {
+        return (
+          <>
+            <FormFooter altBtnText="Cancel" submitBtnText="Assign" />
+          </>
+        );
+      }}
+    </Form>
   );
 }

@@ -49,10 +49,20 @@ import {
   PiFolderDuotone,
   PiMoneyDuotone,
   PiHouseDuotone,
+  PiDeskDuotone,
+  PiDesktopDuotone,
 } from 'react-icons/pi';
 
+interface MenuItem {
+  name: string;
+  href: string;
+  icon?: React.ReactNode;
+  badge?: string;
+  dropdownItems?: MenuItem[];
+}
+
 // Note: do not add href in the label object, it is rendering as label
-export const menuItems = [
+export const menuItems: MenuItem[] = [
   // label start
   // {
   //   name: 'Overview',
@@ -73,7 +83,7 @@ export const menuItems = [
 
   {
     name: 'Home',
-    href: routes.admin.dashboard,
+    href: '/',
     icon: <PiHouseDuotone />,
   },
   {
@@ -85,7 +95,7 @@ export const menuItems = [
   {
     name: 'My Workspace',
     href: routes.comingSoon,
-    icon: <PiWrenchDuotone />,
+    icon: <PiDesktopDuotone />,
   },
   {
     name: 'My Projects',
@@ -108,12 +118,49 @@ export const menuItems = [
         name: 'Profile Creation',
         href: routes.admin.createFundiProfile,
         badge: '',
+        dropdownItems: [
+          {
+            name: 'Service Providers',
+            href: routes.admin.fundi,
+            dropdownItems: [
+              {
+                name: 'Fundi',
+                href: routes.admin.fundi,
+              },
+
+              {
+                name: 'Professional',
+                href: routes.admin.fundi,
+              },
+              {
+                name: 'Contractor',
+                href: routes.admin.fundi,
+              },
+            ],
+          },
+          {
+            name: 'Customers',
+            href: routes.admin.createCustomerProfile,
+            dropdownItems: [
+              {
+                name: 'Individual',
+                href: routes.admin.createCustomerProfile,
+              },
+            ],
+          },
+        ],
       },
 
       {
         name: 'Edit Profile',
         href: routes.admin.editFundiProfile,
         badge: '',
+        dropdownItems: [
+          {
+            name: 'Individual',
+            href: routes.admin.editFundiProfile,
+          },
+        ],
       },
     ],
   },
@@ -124,31 +171,39 @@ export const menuItems = [
     icon: <PiFolderDuotone />,
     dropdownItems: [
       {
-        name: 'Requisitions',
-        href: routes.admin.requisitions,
-        badge: '',
-      },
-      {
-        name: 'Quotations',
-        href: routes.admin.quotations,
-        badge: '',
-      },
-      {
-        name: 'Fundi Register',
-        href: routes.admin.fundis,
-        badge: '',
-      },
-
-      {
         name: 'Customers Register',
         href: routes.admin.customers,
         badge: '',
+        dropdownItems: [
+          {
+            name: 'Individual',
+            href: routes.admin.individual,
+          },
+          {
+            name: 'Organization',
+            href: routes.admin.organization,
+          },
+        ],
       },
 
       {
-        name: 'Requisitions with Quotations',
-        href: routes.admin.quotedRequisitions,
+        name: 'Service  Provider Registers',
+        href: routes.admin.customers,
         badge: '',
+        dropdownItems: [
+          {
+            name: 'Fundi',
+            href: routes.admin.fundi,
+          },
+          {
+            name: 'Professional',
+            href: routes.admin.professional,
+          },
+          {
+            name: 'Contractor',
+            href: routes.admin.contractor,
+          },
+        ],
       },
     ],
   },

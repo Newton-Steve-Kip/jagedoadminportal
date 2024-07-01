@@ -91,17 +91,10 @@ export default function CustomerDetailsCard({
       rounded="lg"
       className={className}
       title="Customer Details"
-      headerClassName="mb-2 @2xl:mb-5"
-      action={
-        <DropdownAction
-          options={viewOptions}
-          onChange={handleChange}
-          dropdownClassName="!z-0"
-        />
-      }
+      headerClassName="mb-2 "
     >
       <SimpleBar>
-        <div className="grid grid-flow-col gap-5 pb-1">
+        <div className="grid grid-flow-col">
           {statData.map((stat) => (
             <UserDetails
               key={stat.title + stat.id}
@@ -113,24 +106,7 @@ export default function CustomerDetailsCard({
               contentClassName="ps-5"
               iconClassName={cn('@5xl:w-20 @5xl:h-20 h-16 w-16')}
               chartClassName="hidden @[200px]:flex @[200px]:items-center h-14 w-24"
-            >
-              {/* <Text className="mt-5 flex items-center leading-none text-gray-500">
-                <Text
-                  as="span"
-                  className={cn(
-                    'me-2 inline-flex items-center font-medium',
-                    stat.graphColor
-                  )}
-                >
-                  {stat.graphIcon}
-                  {stat.percentage}%
-                </Text>
-                <Text as="span" className="me-1 hidden @[240px]:inline-flex">
-                  {stat.increased ? 'Increased' : 'Decreased'}
-                </Text>{' '}
-                last month
-              </Text> */}
-            </UserDetails>
+            ></UserDetails>
           ))}
         </div>
       </SimpleBar>

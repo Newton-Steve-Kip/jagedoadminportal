@@ -1,7 +1,16 @@
 'use client';
 
 import { HeaderCell } from '@/components/ui/table';
-import { Text, Checkbox, ActionIcon, Tooltip, Select, Button } from 'rizzui';
+import {
+  Text,
+  Checkbox,
+  ActionIcon,
+  Tooltip,
+  Select,
+  Button,
+  Badge,
+} from 'rizzui';
+
 import EyeIcon from '@/components/icons/eye';
 import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
@@ -9,10 +18,31 @@ import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import Link from 'next/link';
 import { routes } from '@/config/routes';
 
-const statusOptions = [
-  { label: 'Live', value: 'Live' },
-  { label: 'Closed', value: 'Closed' },
-];
+function getStatusBadge(status: string) {
+  switch (status.toLowerCase()) {
+    case 'under review':
+      return (
+        <div className="flex items-center">
+          <Badge color="warning" renderAsDot />
+          <Text className="ms-2 font-medium text-orange-dark">{status}</Text>
+        </div>
+      );
+    case 'open':
+      return (
+        <div className="flex items-center">
+          <Badge color="success" renderAsDot />
+          <Text className="ms-2 font-medium text-green-dark">{status}</Text>
+        </div>
+      );
+    default:
+      return (
+        <div className="flex items-center">
+          <Badge color="danger" renderAsDot className="bg-gray-400" />
+          <Text className="ms-2 font-medium text-red-600">{status}</Text>
+        </div>
+      );
+  }
+}
 
 type Columns = {
   data: any[];
@@ -124,22 +154,11 @@ export const getColumns = ({
   },
 
   {
-    title: (
-      <HeaderCell
-        title="Status"
-        sortable
-        ascending={
-          sortConfig?.direction === 'asc' && sortConfig?.key === 'status'
-        }
-      />
-    ),
-    onHeaderCell: () => onHeaderCellClick('status'),
+    title: <HeaderCell title="Status" />,
     dataIndex: 'status',
     key: 'status',
-    width: 20,
-    render: (status: string) => {
-      return <StatusSelect selectItem={status} />;
-    },
+    width: 120,
+    render: (value: string) => getStatusBadge(value),
   },
   {
     title: <HeaderCell title="Actions" />,
@@ -158,27 +177,6 @@ export const getColumns = ({
     ),
   },
 ];
-
-function StatusSelect({ selectItem }: { selectItem?: string }) {
-  const selectItemValue = statusOptions.find(
-    (option) => option.value === selectItem
-  );
-  const [value, setValue] = useState(selectItemValue);
-  return (
-    <Select
-      dropdownClassName="!z-10"
-      className="min-w-[140px]"
-      inPortal={false}
-      placeholder="Select Role"
-      options={statusOptions}
-      value={value}
-      onChange={setValue}
-      displayValue={(option: { value: any }) =>
-        renderOptionDisplayValue(option.value as string)
-      }
-    />
-  );
-}
 
 function renderOptionDisplayValue(value: string) {
   switch (value) {

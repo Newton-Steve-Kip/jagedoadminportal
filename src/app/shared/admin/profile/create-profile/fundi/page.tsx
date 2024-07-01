@@ -20,10 +20,11 @@ import {
 import { useLayout } from '@/hooks/use-layout';
 import { LAYOUT_OPTIONS } from '@/config/enums';
 import PersonalDetailsForm from '@/app/shared/admin/product/create-edit/product-summary';
+import RequiredDetails from '@/app/shared/admin/product/create-edit/product-media';
 
 const MAP_STEP_TO_COMPONENT = {
   [formParts.personalDetails]: PersonalDetailsForm,
-  [formParts.requiredDetails]: ProductMedia,
+  [formParts.requiredDetails]: RequiredDetails,
 };
 
 interface IndexProps {
