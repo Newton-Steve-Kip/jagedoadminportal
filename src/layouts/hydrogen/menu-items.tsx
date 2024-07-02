@@ -83,7 +83,7 @@ export const menuItems: MenuItem[] = [
 
   {
     name: 'Home',
-    href: '/',
+    href: routes.admin.dashboard,
     icon: <PiHouseDuotone />,
   },
   {
