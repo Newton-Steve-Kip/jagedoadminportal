@@ -1,10 +1,6 @@
 import JobSlider from '../cards/job-slider';
-import TractionCard from '../cards/traction';
-import JobsCard from '../cards/traction';
 import UsersTraction from '../cards/users-traction';
 import AdminCards from './admin-cards';
-import SummaryWidget from './summary';
-import JobsWidget from '@/app/shared/admin/dashboard/promotional-sales';
 
 export default function RequisitionDetails() {
   return (

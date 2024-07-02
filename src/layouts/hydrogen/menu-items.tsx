@@ -120,23 +120,17 @@ export const menuItems: MenuItem[] = [
         badge: '',
         dropdownItems: [
           {
-            name: 'Service Providers',
-            href: routes.admin.fundi,
-            dropdownItems: [
-              {
-                name: 'Fundi',
-                href: routes.admin.fundi,
-              },
+            name: 'Fundi',
+            href: routes.admin.createFundiProfile,
+          },
 
-              {
-                name: 'Professional',
-                href: routes.admin.fundi,
-              },
-              {
-                name: 'Contractor',
-                href: routes.admin.fundi,
-              },
-            ],
+          {
+            name: 'Professional',
+            href: routes.admin.createProfessionalProfile,
+          },
+          {
+            name: 'Contractor',
+            href: routes.admin.createContractorProfile,
           },
           {
             name: 'Customers',
