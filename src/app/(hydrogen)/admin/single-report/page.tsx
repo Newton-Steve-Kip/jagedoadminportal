@@ -1,5 +1,6 @@
 import SingleReportTable from '@/app/shared/admin/dashboard/tables/generate-report-general';
 import PageHeader from '@/app/shared/commons/page-header';
+import ToastButton from '@/components/buttons/toast-button';
 import { routes } from '@/config/routes';
 import { metaObject } from '@/config/site.config';
 import Link from 'next/link';
@@ -33,9 +34,10 @@ export default function GenerateReport() {
           href={routes.admin.dashboard}
           className="  grid grid-cols-1 @lg:w-auto"
         >
-          <Button as="span" className="w-full @lg:w-auto">
-            Generate Report
-          </Button>
+          <ToastButton
+            title="Generate Report"
+            message="Report generated successfully!"
+          />
         </Link>
       </div>
     </>

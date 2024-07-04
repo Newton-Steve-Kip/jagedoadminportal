@@ -1,4 +1,5 @@
 import AnalyzeQuotationsTable from '@/app/shared/admin/dashboard/tables/quotations/analyze-quotations';
+import ToastButton from '@/components/buttons/toast-button';
 import { routes } from '@/config/routes';
 import { metaObject } from '@/config/site.config';
 import Link from 'next/link';
@@ -19,9 +20,7 @@ export default function AdminRequisitionsPage() {
         href={routes.admin.generateReport}
         className=" mt-6 grid grid-cols-1 @lg:w-auto"
       >
-        <Button as="span" className="w-full @lg:w-auto">
-          Generate report
-        </Button>
+        <ToastButton title="Evaluate" />
       </Link>
     </div>
   );

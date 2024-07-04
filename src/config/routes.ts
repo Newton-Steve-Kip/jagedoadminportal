@@ -33,6 +33,7 @@ export const routes = {
 
     //Jobs
     active: '/admin/registers/jobs/active',
+    activeJobDetails: '/admin/jobs/active-job-details',
     ongoing: '/admin/registers/jobs/ongoing',
     completed: '/admin/registers/jobs/completed',
 
@@ -40,6 +41,7 @@ export const routes = {
     requisitionDetails: '/admin/requisition-details',
 
     //Generate Report
+    generateSingleReport: '/admin/single-report',
     generateReport: '/admin/generate-report',
   },
 

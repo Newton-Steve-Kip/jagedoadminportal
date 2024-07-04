@@ -2,18 +2,6 @@
 
 import { HeaderCell } from '@/components/ui/table';
 import { Text, Checkbox, ActionIcon, Tooltip, Select } from 'rizzui';
-import PencilIcon from '@/components/icons/pencil';
-import EyeIcon from '@/components/icons/eye';
-import DeletePopover from '@/app/shared/commons/delete-popover';
-import DateCell from '@/components/ui/date-cell';
-import { useState } from 'react';
-import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
-import { last } from 'lodash';
-
-const statusOptions = [
-  { label: 'Live', value: 'Live' },
-  { label: 'Closed', value: 'Closed' },
-];
 
 type Columns = {
   data: any[];
@@ -113,47 +101,3 @@ export const getColumns = ({
   //   },
   // },
 ];
-
-function StatusSelect({ selectItem }: { selectItem?: string }) {
-  const selectItemValue = statusOptions.find(
-    (option) => option.value === selectItem
-  );
-  const [value, setValue] = useState(selectItemValue);
-  return (
-    <Select
-      dropdownClassName="!z-10"
-      className="min-w-[140px]"
-      inPortal={false}
-      placeholder="Select Role"
-      options={statusOptions}
-      value={value}
-      onChange={setValue}
-      displayValue={(option: { value: any }) =>
-        renderOptionDisplayValue(option.value as string)
-      }
-    />
-  );
-}
-
-function renderOptionDisplayValue(value: string) {
-  switch (value) {
-    case 'Closed':
-      return (
-        <div className="flex items-center">
-          <PiPlusCircle className="shrink-0 rotate-45 fill-red-dark text-lg" />
-          <Text className="ms-1.5 text-sm font-medium capitalize text-gray-700">
-            {value}
-          </Text>
-        </div>
-      );
-    default:
-      return (
-        <div className="flex items-center">
-          <PiCheckCircleBold className="shrink-0 fill-green-dark text-lg" />
-          <Text className="ms-1.5 text-sm font-medium capitalize text-gray-700">
-            {value}
-          </Text>
-        </div>
-      );
-  }
-}

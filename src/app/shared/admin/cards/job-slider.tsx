@@ -11,11 +11,13 @@ import {
   Bar,
   LabelList,
   ComposedChart,
+  Cell,
 } from 'recharts';
 import SimpleBar from 'simplebar-react';
 import { formatNumber } from '@/utils/format-number';
 import { routes } from '@/config/routes';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const data = [
   {
@@ -36,12 +38,7 @@ const data = [
     fill: '#04364A',
     link: routes.admin.active,
   },
-  {
-    name: 'Ongoing',
-    total: 11,
-    fill: '#176B87',
-    link: routes.admin.ongoing,
-  },
+
   {
     name: 'Completed',
     total: 13,
@@ -62,15 +59,14 @@ const viewOptions = [
 ];
 
 export default function JobSlider({ className }: { className?: string }) {
-  function handleChange(viewType: string) {
-    console.log('viewType', viewType);
-  }
-
+  const [activeBar, setActiveBar] = useState<string | null>(null);
   const router = useRouter();
-  const handleBarClick = (data: { link: any }) => {
-    const { link } = data; // Access the link property from clicked bar data
+
+  const handleBarClick = (data: { name: string; link: string }) => {
+    setActiveBar(data.name);
+    const { link } = data;
     if (link) {
-      router.push(link); // Use Next.js router to navigate to the linked page
+      router.push(link);
     }
   };
 
@@ -80,24 +76,8 @@ export default function JobSlider({ className }: { className?: string }) {
       titleClassName="text-gray-700 font-bold sm:text-sm "
       headerClassName="items-center"
       className={cn(' @container', className)}
-      //   action={
-      //     <DropdownAction
-      //       className="rounded-lg border"
-      //       options={viewOptions}
-      //       onChange={handleChange}
-      //       dropdownClassName="!z-0"
-      //     />
-      //   }
     >
-      <div className="-mt-2 mb-2 flex items-center  @lg:mt-1">
-        {/* <Title as="h2" className="font-inter font-bold">
-          73,504
-        </Title> */
-        /* <span className="flex items-center gap-1 text-green-dark">
-          <TrendingUpIcon className="h-auto w-5" />
-          <span className="font-semibold leading-none"> +32.40%</span>
-        </span> */}
-      </div>
+      <div className="-mt-2 mb-2 flex items-center  @lg:mt-1"></div>
       <SimpleBar>
         <div className="-mt-4 h-[17rem] w-full pt-1">
           <ResponsiveContainer width="100%" height="100%">
@@ -126,7 +106,17 @@ export default function JobSlider({ className }: { className?: string }) {
                 barSize={28}
                 radius={[50, 50, 50, 50]}
                 onClick={handleBarClick}
+                className="cursor-pointer transition-all duration-300"
               >
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.fill}
+                    className={`${
+                      activeBar === entry.name ? 'origin-center scale-110' : ''
+                    } origin-center transition-transform duration-300`}
+                  />
+                ))}
                 <LabelList
                   position="right"
                   dataKey="total"

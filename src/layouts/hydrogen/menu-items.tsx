@@ -87,7 +87,7 @@ export const menuItems: MenuItem[] = [
     icon: <PiHouseDuotone />,
   },
   {
-    name: 'My Shop',
+    name: 'Shop App',
     href: routes.comingSoon,
     icon: <PiTrolleyDuotone />,
   },
@@ -133,14 +133,8 @@ export const menuItems: MenuItem[] = [
             href: routes.admin.createContractorProfile,
           },
           {
-            name: 'Customers',
+            name: 'Customer',
             href: routes.admin.createCustomerProfile,
-            dropdownItems: [
-              {
-                name: 'Individual',
-                href: routes.admin.createCustomerProfile,
-              },
-            ],
           },
         ],
       },
@@ -151,8 +145,21 @@ export const menuItems: MenuItem[] = [
         badge: '',
         dropdownItems: [
           {
-            name: 'Individual',
+            name: 'Fundi',
             href: routes.admin.editFundiProfile,
+          },
+
+          {
+            name: 'Professional',
+            href: routes.admin.editProfessionalProfile,
+          },
+          {
+            name: 'Contractor',
+            href: routes.admin.editContractorProfile,
+          },
+          {
+            name: 'Customer',
+            href: routes.admin.editCustomerProfile,
           },
         ],
       },

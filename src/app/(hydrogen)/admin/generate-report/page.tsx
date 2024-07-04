@@ -1,8 +1,7 @@
 import QuotationReportTable from '@/app/shared/admin/dashboard/tables/quotation-report';
 import EvaluateQuoatations from '@/app/shared/admin/evaluate-quotations';
 import PageHeader from '@/app/shared/commons/page-header';
-import ViewRequisition from '@/app/shared/customers/requisitions/requisition-details';
-import InvoiceDetails from '@/app/shared/logistics/shipment/details/invoice-details';
+import ToastButton from '@/components/buttons/toast-button';
 import { routes } from '@/config/routes';
 import { metaObject } from '@/config/site.config';
 import Link from 'next/link';
@@ -31,15 +30,15 @@ export default function GenerateReport() {
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb} />
 
       <div className="mt-2 flex flex-col gap-y-6 @container sm:gap-y-10">
-        <EvaluateQuoatations />
         <QuotationReportTable className="-mt-2" />
         <Link
           href={routes.admin.dashboard}
-          className="  grid grid-cols-1 @lg:w-auto"
+          className="grid grid-cols-1 @lg:w-auto"
         >
-          <Button as="span" className="w-full @lg:w-auto">
-            Generate Report
-          </Button>
+          <ToastButton
+            title="Generate Report"
+            message="Report generated successfully!"
+          />
         </Link>
       </div>
     </>

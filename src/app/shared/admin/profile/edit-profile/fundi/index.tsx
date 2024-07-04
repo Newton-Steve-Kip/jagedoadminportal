@@ -19,6 +19,7 @@ import usePrice from '@/hooks/use-price';
 import { routes } from '@/config/routes';
 import Link from 'next/link';
 import CustomersTable from '../../../dashboard/tables/customers/organization';
+import { useRouter } from 'next/navigation';
 
 interface EditFundiFormProps {
   slug?: string;
@@ -26,11 +27,13 @@ interface EditFundiFormProps {
 
 function WidgetCard({
   title,
+  slug,
   className,
   children,
   childrenWrapperClass,
 }: {
   title?: string;
+  slug?: string;
   className?: string;
   children: React.ReactNode;
   childrenWrapperClass?: string;
@@ -55,7 +58,9 @@ function WidgetCard({
   );
 }
 
-export default function EditFundiForm() {
+export default function EditFundiForm({ slug }: EditFundiFormProps) {
+  const isApproved = slug === 'approved';
+
   const { items, total, totalItems } = useCart();
   const { price: subtotal } = usePrice(
     items && {
@@ -136,15 +141,15 @@ export default function EditFundiForm() {
               </div>
             </div>
           </div>
+          <Button
+            as="span"
+            className="inline-flex h-[38px]  justify-center  shadow md:h-10"
+          >
+            {isApproved ? 'Unverify' : 'Verify'}
+          </Button>
         </div>
       </div>
 
-      <Button
-        as="span"
-        className="inline-flex h-[38px] flex-row justify-end  shadow md:h-10"
-      >
-        {/* {slug ? 'Verified' : 'Unverify'} */}
-      </Button>
       <CustomersTable className="mt-6" />
     </div>
   );

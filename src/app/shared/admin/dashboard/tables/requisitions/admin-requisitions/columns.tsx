@@ -12,11 +12,6 @@ import { last } from 'lodash';
 import Link from 'next/link';
 import { routes } from '@/config/routes';
 
-const statusOptions = [
-  { label: 'Live', value: 'Live' },
-  { label: 'Closed', value: 'Closed' },
-];
-
 type Columns = {
   data: any[];
   sortConfig?: any;
@@ -29,14 +24,14 @@ type Columns = {
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case 'under review':
       return (
         <div className="flex items-center">
           <Badge color="warning" renderAsDot />
           <Text className="ms-2 font-medium text-orange-dark">{status}</Text>
         </div>
       );
-    case 'publish':
+    case 'open':
       return (
         <div className="flex items-center">
           <Badge color="success" renderAsDot />
@@ -178,27 +173,6 @@ export const getColumns = ({
     ),
   },
 ];
-
-function StatusSelect({ selectItem }: { selectItem?: string }) {
-  const selectItemValue = statusOptions.find(
-    (option) => option.value === selectItem
-  );
-  const [value, setValue] = useState(selectItemValue);
-  return (
-    <Select
-      dropdownClassName="!z-10"
-      className="min-w-[140px]"
-      inPortal={false}
-      placeholder="Select Role"
-      options={statusOptions}
-      value={value}
-      onChange={setValue}
-      displayValue={(option: { value: any }) =>
-        renderOptionDisplayValue(option.value as string)
-      }
-    />
-  );
-}
 
 function renderOptionDisplayValue(value: string) {
   switch (value) {

@@ -9,17 +9,17 @@ export const requisitions = [
     requestType: 'Emergency',
     description: 'plumbing work',
     location: 'Kome,Homabay',
-    status: 'Live',
+    status: 'Open',
   },
   {
     id: '3419',
     date: '2022-11-10T06:22:01.621Z',
     category: 'Professional',
     subCategory: 'Engineer',
-    requestType: 'Emergency',
+    requestType: '2.0',
     description: 'repair faulty wires',
     location: 'Kome,Homabay',
-    status: 'Live',
+    status: 'Under Review',
   },
 ];
 
@@ -37,7 +37,7 @@ export const jobData = [
     inProcess: 25,
     hired: 3,
     category: ['UI/UX', 'Design', 'Figma', 'Adobe', 'Sketch'],
-    status: 'Closed',
+    status: 'Approved',
   },
   {
     id: '3443',
@@ -52,7 +52,7 @@ export const jobData = [
     inProcess: 25,
     hired: 3,
     category: ['UI/UX', 'Design', 'Figma', 'Adobe', 'Sketch'],
-    status: 'Closed',
+    status: 'Unverified',
   },
 ];
 
@@ -110,6 +110,16 @@ export const quotationReportData = [
     phone: '254733456673',
     level: 'Skilled Fundi',
     rating: '8',
+  },
+];
+
+export const singleQuotationReportData = [
+  {
+    item: '1',
+    name: 'Owen Oscar',
+    phone: '25412334552',
+    level: 'Master Fundi',
+    rating: '7',
   },
 ];
 

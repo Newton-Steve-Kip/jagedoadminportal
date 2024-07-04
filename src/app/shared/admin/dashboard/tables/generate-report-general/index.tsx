@@ -5,8 +5,12 @@ import { useColumn } from '@/hooks/use-column';
 import { useTable } from '@/hooks/use-table';
 import ControlledTable from '@/components/controlled-table';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import { Input } from 'rizzui';
-import { jobData, quotationReportData } from '@/data/job-data';
+import { Input, Textarea } from 'rizzui';
+import {
+  jobData,
+  quotationReportData,
+  singleQuotationReportData,
+} from '@/data/job-data';
 import { getColumns } from './columns';
 import FilterElement from './filter-element';
 import WidgetCard2 from '@/components/cards/widget-card2';
@@ -71,12 +75,12 @@ export default function SingleReportTable({
     handleSelectAll,
     handleDelete,
     handleReset,
-  } = useTable(quotationReportData, pageSize, filterState);
+  } = useTable(singleQuotationReportData, pageSize, filterState);
 
   const columns = useMemo(
     () =>
       getColumns({
-        data: quotationReportData,
+        data: singleQuotationReportData,
         sortConfig,
         checkedItems: selectedRowKeys,
         onHeaderCellClick,
@@ -127,13 +131,13 @@ export default function SingleReportTable({
         </div>
       }
     >
-      <div className="-ml-6 grid items-start rounded-xl border-none border-gray-300  @2xl:grid-cols-2 @3xl:grid-cols-3 @3xl:p-8 @5xl:grid-cols-4">
+      <div className="-ml-8 grid items-start rounded-xl border-none border-gray-300  @2xl:grid-cols-2 @3xl:grid-cols-3 @3xl:p-8 @5xl:grid-cols-4">
         <ul className="grid gap-2 @3xl:col-span-full @3xl:mb-2 @5xl:col-span-1 @5xl:mb-0">
-          <li className="flex items-center gap-3 @3xl:justify-between @5xl:justify-start">
-            <span className="font-semibold text-gray-900">
+          <li className="flex items-center gap-3 whitespace-nowrap @3xl:justify-between @5xl:justify-start">
+            <span className=" font-semibold text-gray-900">
               SiteConditions :
             </span>
-            Construction
+            Construction underway
           </li>
           <li className="flex items-center gap-3 @3xl:justify-between @5xl:justify-start">
             <span className="font-semibold text-gray-900">Deadline:</span>
@@ -176,6 +180,11 @@ export default function SingleReportTable({
           onChange: (page: number) => handlePaginate(page),
         }}
         className="-mx-5 lg:-mx-5"
+      />
+      <Textarea
+        className="mt-8"
+        label="Recommendation"
+        placeholder="Add Recommendation..."
       />
     </WidgetCard2>
   );

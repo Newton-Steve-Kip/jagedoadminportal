@@ -41,13 +41,13 @@ export default function Timeline({
           </div>
           <div
             className={cn(
-              'relative flex-grow border-s border-muted py-5 ps-10 before:absolute before:-left-[3px] before:-top-[3px] before:h-1.5 before:w-1.5 before:rounded-full before:bg-gray-200 rtl:before:-right-[3px] dark:border-gray-700 dark:before:bg-gray-900',
+              'relative flex-grow border-s border-muted py-5 ps-10 before:absolute before:-left-[3px] before:-top-[3px] before:h-1.5 before:w-1.5 before:rounded-full before:bg-gray-200 dark:border-gray-700 dark:before:bg-gray-900 rtl:before:-right-[3px]',
               index !== 0 && 'before:hidden',
               index === data.length - 1 &&
                 'before:-bottom-[3px] before:top-auto before:block'
             )}
           >
-            <span className="absolute -left-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-gray-0 rtl:-right-3 dark:bg-gray-50">
+            <span className="absolute -left-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-gray-0 dark:bg-gray-50 rtl:-right-3">
               {timeline.icon ? (
                 timeline.icon
               ) : order === 'asc' ? (

@@ -46,11 +46,6 @@ function getStatusBadge(status: string) {
   }
 }
 
-const statusOptions = [
-  { label: 'Live', value: 'Live' },
-  { label: 'Closed', value: 'Closed' },
-];
-
 type Columns = {
   data: any[];
   sortConfig?: any;
@@ -156,7 +151,7 @@ export const getColumns = ({
     title: <HeaderCell title="Status" />,
     dataIndex: 'status',
     key: 'status',
-    width: 120,
+    width: 50,
     render: (value: string) => getStatusBadge(value),
   },
   {
@@ -167,37 +162,13 @@ export const getColumns = ({
     width: 100,
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
-        <Link href={routes.admin.generateReport}>
+        <Link href={routes.admin.generateSingleReport}>
           <Button size="sm"> Evaluate</Button>
-        </Link>
-        <Link href={routes.admin.generateReport}>
-          <Button size="sm"> Generate Report</Button>
         </Link>
       </div>
     ),
   },
 ];
-
-function StatusSelect({ selectItem }: { selectItem?: string }) {
-  const selectItemValue = statusOptions.find(
-    (option) => option.value === selectItem
-  );
-  const [value, setValue] = useState(selectItemValue);
-  return (
-    <Select
-      dropdownClassName="!z-10"
-      className="min-w-[140px]"
-      inPortal={false}
-      placeholder="Select Role"
-      options={statusOptions}
-      value={value}
-      onChange={setValue}
-      displayValue={(option: { value: any }) =>
-        renderOptionDisplayValue(option.value as string)
-      }
-    />
-  );
-}
 
 function renderOptionDisplayValue(value: string) {
   switch (value) {

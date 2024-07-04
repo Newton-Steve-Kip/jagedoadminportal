@@ -1,6 +1,7 @@
 import JobSlider from '../cards/job-slider';
 import UsersTraction from '../cards/users-traction';
 import AdminCards from './admin-cards';
+import SummaryWidget from './summary';
 
 export default function RequisitionDetails() {
   return (
@@ -35,10 +36,10 @@ export default function RequisitionDetails() {
 
         <AdminCards className="border-none py-5  @2xl:grid-cols-3 @3xl:gap-6 @4xl:col-span-2 @4xl:grid-cols-4 @7xl:col-span-8" />
         <JobSlider className="h-[300px] @sm:h-[320px]   @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" />
-        {/* <SummaryWidget className="h-[300px] @sm:h-[320px] @7xl:col-span-4 @7xl:col-start-9 @7xl:row-start-1 @7xl:row-end-3 @7xl:h-full" /> */}
         {/* <TractionCard className="h-[300px] @sm:h-[320px] @4xl:col-start-2  @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" /> */}
         <UsersTraction className="h-[300px] @sm:h-[320px]   @7xl:col-span-4 @7xl:col-start-auto @7xl:row-start-auto" />
       </div>
+      <SummaryWidget className="mt-12 h-[300px] @sm:h-[320px]  @7xl:col-span-4 @7xl:col-start-9 @7xl:row-start-1 @7xl:row-end-3 @7xl:h-full" />
     </div>
   );
 }

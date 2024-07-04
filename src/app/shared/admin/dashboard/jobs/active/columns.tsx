@@ -10,25 +10,30 @@ import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
 
-function getStatusBadge(status: string) {
+function getStatusBadge(status: string, onClick: () => void) {
+  const commonProps = {
+    className: 'flex items-center cursor-pointer',
+    onClick,
+  };
+
   switch (status.toLowerCase()) {
     case 'ongoing':
       return (
-        <div className="flex items-center">
+        <div {...commonProps}>
           <Badge color="danger" renderAsDot />
           <Text className="ms-2 font-medium text-red-dark">{status}</Text>
         </div>
       );
     case 'completed':
       return (
-        <div className="flex items-center">
+        <div {...commonProps}>
           <Badge color="success" renderAsDot />
           <Text className="ms-2 font-medium text-green-dark">{status}</Text>
         </div>
       );
     default:
       return (
-        <div className="flex items-center">
+        <div {...commonProps}>
           <Badge color="warning" renderAsDot className="bg-gray-400" />
           <Text className="ms-2 font-medium text-gray-600">{status}</Text>
         </div>
@@ -44,6 +49,7 @@ type Columns = {
   onDeleteItem: (id: string) => void;
   onHeaderCellClick: (value: string) => void;
   onChecked?: (id: string) => void;
+  onStatusClick: (status: string) => void;
 };
 
 export const getColumns = ({
@@ -54,6 +60,7 @@ export const getColumns = ({
   onDeleteItem,
   handleSelectAll,
   onHeaderCellClick,
+  onStatusClick,
 }: Columns) => [
   {
     title: <HeaderCell title="JOB ID" />,
@@ -97,6 +104,7 @@ export const getColumns = ({
     dataIndex: 'status',
     key: 'status',
     width: 120,
-    render: (value: string) => getStatusBadge(value),
+    render: (value: string) =>
+      getStatusBadge(value, () => onStatusClick(value)),
   },
 ];

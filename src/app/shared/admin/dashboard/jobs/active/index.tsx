@@ -10,12 +10,15 @@ import { activeJobs, completeJobs } from '@/data/job-data';
 import { getColumns } from './columns';
 import FilterElement from './filter-element';
 import WidgetCard2 from '@/components/cards/widget-card2';
+import { useRouter } from 'next/navigation';
+import { routes } from '@/config/routes';
 
 const filterState = {
   date: [null, null],
   status: '',
 };
 export default function ActiveJobsTable({ className }: { className?: string }) {
+  const router = useRouter();
   const [pageSize, setPageSize] = useState(7);
 
   const onHeaderCellClick = (value: string) => ({
@@ -49,6 +52,10 @@ export default function ActiveJobsTable({ className }: { className?: string }) {
     handleReset,
   } = useTable(activeJobs, pageSize, filterState);
 
+  const handleStatusClick = (status: string) => {
+    router.push(routes.admin.activeJobDetails);
+  };
+
   const columns = useMemo(
     () =>
       getColumns({
@@ -59,6 +66,7 @@ export default function ActiveJobsTable({ className }: { className?: string }) {
         onDeleteItem,
         onChecked: handleRowSelect,
         handleSelectAll,
+        onStatusClick: handleStatusClick,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [

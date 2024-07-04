@@ -84,7 +84,7 @@ export default function TrackingOverview({
         <ShipmentSubscription className="mt-10" />
       </div>
       <div>
-        <Timeline data={timelineData} showmoreButton={true} order="desc" />
+        <Timeline data={timelineData} showmoreButton={true} order="asc" />
       </div>
     </div>
   );

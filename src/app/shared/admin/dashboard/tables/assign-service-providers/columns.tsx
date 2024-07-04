@@ -9,22 +9,19 @@ import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
-
-const statusOptions = [
-  { label: 'Live', value: 'Live' },
-  { label: 'Closed', value: 'Closed' },
-];
+import Link from 'next/link';
+import { routes } from '@/config/routes';
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case 'unverified':
       return (
         <div className="flex items-center">
           <Badge color="warning" renderAsDot />
           <Text className="ms-2 font-medium text-orange-dark">{status}</Text>
         </div>
       );
-    case 'publish':
+    case 'approved':
       return (
         <div className="flex items-center">
           <Badge color="success" renderAsDot />
@@ -136,31 +133,7 @@ export const getColumns = ({
     width: 80,
     render: (gender: string) => <Text>{gender}</Text>,
   },
-  // {
-  //   title: <HeaderCell title="Category" />,
-  //   dataIndex: 'category',
-  //   key: 'category',
-  //   width: 260,
-  //   render: (category: string[]) => {
-  //     let print = category?.slice(0, 2);
-  //     let more = category.length - category.slice(0, 2).length;
-  //     return (
-  //       <div className="flex h-auto flex-wrap gap-2">
-  //         {print.map((item: string, index: number) => (
-  //           <span
-  //             key={index}
-  //             className="rounded-full bg-gray-100 px-2 py-1 text-xs"
-  //           >
-  //             {item}
-  //           </span>
-  //         ))}
-  //         <span className="rounded-full bg-gray-100 px-2 py-1 text-xs">
-  //           +{more}
-  //         </span>
-  //       </div>
-  //     );
-  //   },
-  // },
+
   {
     title: <HeaderCell title="Age" />,
     dataIndex: 'age',
@@ -199,17 +172,6 @@ export const getColumns = ({
     width: 180,
     render: (_: string, row: any) => (
       <div className="flex items-center justify-end gap-3 pe-3">
-        <Tooltip size="sm" content={'Edit'} placement="top" color="invert">
-          <ActionIcon
-            as="span"
-            size="sm"
-            variant="outline"
-            aria-label={'Edit Appointment'}
-            className="hover:!border-gray-900 hover:text-gray-700"
-          >
-            <PencilIcon className="h-4 w-4" />
-          </ActionIcon>
-        </Tooltip>
         <Tooltip size="sm" content={'View'} placement="top" color="invert">
           <ActionIcon
             as="span"
@@ -218,7 +180,19 @@ export const getColumns = ({
             aria-label={'View Appointment'}
             className="hover:!border-gray-900 hover:text-gray-700"
           >
-            <EyeIcon className="h-4 w-4" />
+            <Link
+              href={{
+                pathname: routes.admin.editFundiProfile,
+                query: {
+                  status:
+                    row.status.toLowerCase() === 'approved'
+                      ? 'approved'
+                      : 'unverified',
+                },
+              }}
+            >
+              <EyeIcon className="h-4 w-4" />
+            </Link>
           </ActionIcon>
         </Tooltip>
         {/* <DeletePopover
@@ -230,47 +204,3 @@ export const getColumns = ({
     ),
   },
 ];
-
-function StatusSelect({ selectItem }: { selectItem?: string }) {
-  const selectItemValue = statusOptions.find(
-    (option) => option.value === selectItem
-  );
-  const [value, setValue] = useState(selectItemValue);
-  return (
-    <Select
-      dropdownClassName="!z-10"
-      className="min-w-[140px]"
-      inPortal={false}
-      placeholder="Select Role"
-      options={statusOptions}
-      value={value}
-      onChange={setValue}
-      displayValue={(option: { value: any }) =>
-        renderOptionDisplayValue(option.value as string)
-      }
-    />
-  );
-}
-
-function renderOptionDisplayValue(value: string) {
-  switch (value) {
-    case 'Closed':
-      return (
-        <div className="flex items-center">
-          <PiPlusCircle className="shrink-0 rotate-45 fill-red-dark text-lg" />
-          <Text className="ms-1.5 text-sm font-medium capitalize text-gray-700">
-            {value}
-          </Text>
-        </div>
-      );
-    default:
-      return (
-        <div className="flex items-center">
-          <PiCheckCircleBold className="shrink-0 fill-green-dark text-lg" />
-          <Text className="ms-1.5 text-sm font-medium capitalize text-gray-700">
-            {value}
-          </Text>
-        </div>
-      );
-  }
-}
