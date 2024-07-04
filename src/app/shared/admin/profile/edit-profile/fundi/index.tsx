@@ -20,6 +20,7 @@ import { routes } from '@/config/routes';
 import Link from 'next/link';
 import CustomersTable from '../../../dashboard/tables/customers/organization';
 import { useRouter } from 'next/navigation';
+import HistoryTable from '../../../dashboard/tables/fundi-history';
 
 interface EditFundiFormProps {
   slug?: string;
@@ -150,7 +151,7 @@ export default function EditFundiForm({ slug }: EditFundiFormProps) {
         </div>
       </div>
 
-      <CustomersTable className="mt-6" />
+      <HistoryTable className="mt-6" />
     </div>
   );
 }

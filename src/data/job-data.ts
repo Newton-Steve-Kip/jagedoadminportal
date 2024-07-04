@@ -56,6 +56,32 @@ export const jobData = [
   },
 ];
 
+export const historyData = [
+  {
+    id: '3324',
+    date: '2022-11-10T06:22:01.621Z',
+    reqType: 'Standard',
+    lastName: 'Limo',
+    gender: 'Male',
+    location: 'Kome,Homabay',
+    category: 'professional',
+    subCategory: 'architect',
+    description: 'design two storey apartment',
+    status: 'Complete',
+  },
+  {
+    id: '3325',
+    date: '2022-11-10T06:22:01.621Z',
+    reqType: 'Standard',
+    gender: 'Male',
+    location: 'Kome,Homabay',
+    category: 'professional',
+    subCategory: 'architect',
+    description: 'design three bedroom bungalow',
+    status: 'Complete',
+  },
+];
+
 export const completeJobs = [
   {
     id: '3324',
