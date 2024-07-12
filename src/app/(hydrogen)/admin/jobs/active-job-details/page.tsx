@@ -13,12 +13,11 @@ export const metadata = {
 
 type PageProps = {
   className: string;
-  // other props as needed
 };
-
 export default function ActiveJobsPage({ className }: PageProps) {
+  // export default function ActiveJobsPage() {
   return (
-    <div className={cn('xl:gap-15 grid grid-cols-2 lg:grid-cols-2', className)}>
+    <div className={cn('xl:gap-15 grid grid-cols-2 lg:grid-cols-2')}>
       <div>
         <ActiveJobDetailsCard />
         <Progressbar

@@ -43,11 +43,13 @@ const timelineData = [
   },
 ];
 
-export default function ProgressBarActive({
-  className,
-}: {
-  className?: string;
-}) {
+export default function ProgressBarActive(
+  {
+    // className,
+  }: {
+    // className?: string;
+  }
+) {
   return (
     <div>
       <div>

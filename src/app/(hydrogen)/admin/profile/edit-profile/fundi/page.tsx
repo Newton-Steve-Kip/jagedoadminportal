@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 export default function OrderDetailsPage() {
   const searchParams = useSearchParams();
-  const status = searchParams.get('status') || ''; // Access the status query parameter
+  const status = searchParams.get('status') || '';
 
   const pageHeader = {
     title: `Profile`,

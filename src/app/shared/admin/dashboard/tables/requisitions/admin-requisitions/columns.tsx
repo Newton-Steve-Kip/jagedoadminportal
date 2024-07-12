@@ -144,55 +144,37 @@ export const getColumns = ({
     render: (value: string) => getStatusBadge(value),
   },
   {
-    // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
     title: <HeaderCell title="Actions" />,
     dataIndex: 'action',
     key: 'action',
     width: 100,
-    render: (_: string, row: any) => (
-      <div className="flex items-center justify-end gap-3 pe-3">
-        <Tooltip size="sm" content={'View'} placement="top" color="invert">
-          <ActionIcon
-            as="span"
-            size="sm"
-            variant="outline"
-            aria-label={'View Appointment'}
-            className="hover:!border-gray-900 hover:text-gray-700"
-          >
-            <Link href={routes.admin.requisitionDetails}>
-              <EyeIcon className="h-4 w-4" />
-            </Link>
-          </ActionIcon>
-        </Tooltip>
-        {/* <DeletePopover
-          title={`Remove User`}
-          description={`Are you sure you want to remove this User?`}
-          onDelete={() => onDeleteItem(row.id)}
-        /> */}
-      </div>
-    ),
+    render: (_: any, row: { requestType: string }) => {
+      const requestType = row.requestType.toLowerCase();
+      const queryParams =
+        requestType === 'managed by self'
+          ? '?type=self'
+          : requestType === 'managed by jagedo'
+            ? '?type=jagedo'
+            : '';
+
+      return (
+        <div className="flex items-center justify-end gap-3 pe-3">
+          <Tooltip size="sm" content={'View'} placement="top" color="invert">
+            <ActionIcon
+              as="span"
+              size="sm"
+              variant="outline"
+              aria-label={'View Appointment'}
+              className="hover:!border-gray-900 hover:text-gray-700"
+            >
+              <Link href={`${routes.admin.requisitionDetails}${queryParams}`}>
+                <EyeIcon className="h-4 w-4" />
+              </Link>
+            </ActionIcon>
+          </Tooltip>
+          {/* DeletePopover code */}
+        </div>
+      );
+    },
   },
 ];
-
-function renderOptionDisplayValue(value: string) {
-  switch (value) {
-    case 'Closed':
-      return (
-        <div className="flex items-center">
-          <PiPlusCircle className="shrink-0 rotate-45 fill-red-dark text-lg" />
-          <Text className="ms-1.5 text-sm font-medium capitalize text-gray-700">
-            {value}
-          </Text>
-        </div>
-      );
-    default:
-      return (
-        <div className="flex items-center">
-          <PiCheckCircleBold className="shrink-0 fill-green-dark text-lg" />
-          <Text className="ms-1.5 text-sm font-medium capitalize text-gray-700">
-            {value}
-          </Text>
-        </div>
-      );
-  }
-}

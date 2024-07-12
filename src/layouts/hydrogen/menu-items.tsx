@@ -139,30 +139,26 @@ export const menuItems: MenuItem[] = [
         ],
       },
 
-      {
-        name: 'Edit Profile',
-        href: routes.admin.editFundiProfile,
-        badge: '',
-        dropdownItems: [
-          {
-            name: 'Fundi',
-            href: routes.admin.editFundiProfile,
-          },
+      // {
+      //   name: 'Edit Profile',
+      //   href: routes.admin.editFundiProfile,
+      //   badge: '',
+      //   dropdownItems: [
+      //     {
+      //       name: 'Fundi',
+      //       href: routes.admin.editFundiProfile,
+      //     },
 
-          {
-            name: 'Professional',
-            href: routes.admin.editProfessionalProfile,
-          },
-          {
-            name: 'Contractor',
-            href: routes.admin.editContractorProfile,
-          },
-          {
-            name: 'Customer',
-            href: routes.admin.editCustomerProfile,
-          },
-        ],
-      },
+      //     {
+      //       name: 'Professional',
+      //       href: routes.admin.editProfessionalProfile,
+      //     },
+      //     {
+      //       name: 'Contractor',
+      //       href: routes.admin.editContractorProfile,
+      //     },
+      //   ],
+      // },
     ],
   },
 

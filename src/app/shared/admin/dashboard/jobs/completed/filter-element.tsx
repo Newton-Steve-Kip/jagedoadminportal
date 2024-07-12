@@ -24,12 +24,12 @@ const categoryOptions = [
 
 const statusOptions = [
   {
-    label: 'Live',
-    value: 'live',
+    label: 'Reviewed',
+    value: 'reviewed',
   },
   {
-    label: 'Closed',
-    value: 'closed',
+    label: 'Unreviewed',
+    value: 'unreviewed',
   },
 ];
 

@@ -6,10 +6,12 @@ export const routes = {
 
     //Profile
     createCustomerProfile: '/admin/profile/create-profile/customers',
-    createFundiProfile: '/admin/profile/create-profile/fundi',
+    createFundiProfile: '/admin/profile-page/profile',
     createContractorProfile: '/admin/profile/create-profile/contractor',
     createProfessionalProfile: '/admin/profile/create-profile/professional',
-    editCustomerProfile: '/admin/profile/edit-profile/customer',
+    // editIndividualCustomerProfile:
+    //   '/admin/profile/edit-profile/customer-individual',
+    // editOrgCustomerProfile: '/admin/profile/edit-profile/customer-organization',
     editFundiProfile: '/admin/profile/edit-profile/fundi',
     editContractorProfile: '/admin/profile/edit-profile/contractor',
     editProfessionalProfile: '/admin/profile/edit-profile/professional',
@@ -30,15 +32,18 @@ export const routes = {
     quotedRequisitions: '/admin/registers/requisitions/quoted-requisitions',
     analyzeQuotations: '/admin/registers/quotations/analyze-quotations',
     evaluate: '/admin/quotations/evaluateQuotations',
+    reviews: '/admin/registers/reviews',
 
     //Jobs
     active: '/admin/registers/jobs/active',
     activeJobDetails: '/admin/jobs/active-job-details',
+    completedJobDetails: '/admin/jobs/completed-job-details',
     ongoing: '/admin/registers/jobs/ongoing',
     completed: '/admin/registers/jobs/completed',
 
-    //Requisition details
+    //Requisitions
     requisitionDetails: '/admin/requisition-details',
+    createRFQ: '/admin/requisition-details/requisition-for-quotation',
 
     //Generate Report
     generateSingleReport: '/admin/single-report',

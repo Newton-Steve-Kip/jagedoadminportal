@@ -45,6 +45,12 @@ const data = [
     fill: '#64CCC5',
     link: routes.admin.completed,
   },
+  {
+    name: 'Reviews',
+    total: 5,
+    fill: '#F0CCC5',
+    link: routes.admin.reviews,
+  },
 ];
 
 const viewOptions = [

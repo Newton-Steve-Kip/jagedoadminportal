@@ -15,15 +15,7 @@ import {
 import WidgetCard from '@/components/cards/widget-card';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/config/routes';
-
-const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
-  ssr: false,
-  loading: () => (
-    <div className="grid h-10 place-content-center">
-      <Loader variant="spinner" />
-    </div>
-  ),
-});
+import { useSearchParams } from 'next/navigation';
 
 const QuillEditor = dynamic(() => import('@/components/ui/quill-editor'), {
   ssr: false,
@@ -31,9 +23,16 @@ const QuillEditor = dynamic(() => import('@/components/ui/quill-editor'), {
 
 export default function CustomTextArea({ className }: { className?: string }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const getManagedByType = (): string | null => {
+    return searchParams.get('type');
+  };
+
+  const managedByType = getManagedByType();
 
   const onSubmit: SubmitHandler<PersonalInfoFormTypes> = () => {
-    router.push(routes.admin.addToServiceProviders);
+    router.push(`${routes.admin.createRFQ}?type=${managedByType}`);
 
     // console.log('Profile settings data ->', {
     //   // ...data,
@@ -86,7 +85,7 @@ export default function CustomTextArea({ className }: { className?: string }) {
               <FormFooter
                 // isLoading={isLoading}
                 altBtnText="Cancel"
-                submitBtnText="Assign Service Providers"
+                submitBtnText="Generate RFQ"
               />
             </>
           );

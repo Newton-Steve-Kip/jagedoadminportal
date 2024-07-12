@@ -9,6 +9,8 @@ import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
+import Link from 'next/link';
+import { routes } from '@/config/routes';
 
 function getStatusBadge(review: string) {
   switch (review.toLowerCase()) {
@@ -56,54 +58,90 @@ export const getColumns = ({
   onHeaderCellClick,
 }: Columns) => [
   {
-    title: <HeaderCell title="JOB ID" />,
+    title: <HeaderCell title="JOB" />,
     dataIndex: 'id',
     key: 'id',
     width: 10,
-    render: (id: string) => <Text>#{id}</Text>,
+    render: (id: string) => <Text>JOB0{id}</Text>,
   },
 
   {
-    title: <HeaderCell title="Completion Date" className="uppercase" />,
+    title: <HeaderCell title=" Date" className="uppercase" />,
     dataIndex: 'completionDate',
     key: 'completionDate',
-    width: 100,
+    width: 150,
     render: (completionDate: Date) => <DateCell date={completionDate} />,
   },
   {
-    title: <HeaderCell title="Requisition Date" className="uppercase" />,
-    dataIndex: 'requisitionDate',
-    key: 'requisitionDate',
-    width: 100,
-    render: (requisitionDate: Date) => <DateCell date={requisitionDate} />,
+    title: <HeaderCell title="Category" className="uppercase" />,
+    dataIndex: 'category',
+    key: 'category',
+    width: 20,
+    render: (category: string) => <Text>{category}</Text>,
   },
+  {
+    title: <HeaderCell title="Sub Category" className="uppercase" />,
+    dataIndex: 'subCategory',
+    key: 'subCategory',
+    width: 50,
+    render: (subCategory: string) => <Text>{subCategory}</Text>,
+  },
+  {
+    title: <HeaderCell title="Request Type" className="uppercase" />,
+    dataIndex: 'requestType',
+    key: 'requestType',
+    width: 100,
+    render: (requestType: string) => (
+      <Text className="font-semibold">{requestType}</Text>
+    ),
+  },
+
   {
     title: <HeaderCell title="Description" />,
     dataIndex: 'description',
     key: 'description',
-    width: 80,
+    width: 250,
     render: (gender: string) => <Text>{gender}</Text>,
-  },
-  {
-    title: <HeaderCell title="Specification" />,
-    dataIndex: 'specification',
-    key: 'specification',
-    width: 100,
-    render: (specification: string) => <Text>{specification}</Text>,
-  },
-  {
-    title: <HeaderCell title="Assigned Fundi" />,
-    dataIndex: 'fundi',
-    key: 'fundi',
-    width: 80,
-    render: (fundi: string) => <Text>{fundi}</Text>,
   },
 
   {
-    title: <HeaderCell title="Reviews" />,
-    dataIndex: 'review',
-    key: 'review',
-    width: 120,
+    title: <HeaderCell title="Location" />,
+    dataIndex: 'location',
+    key: 'location',
+    width: 50,
+    render: (location: string) => <Text>{location}</Text>,
+  },
+
+  {
+    title: <HeaderCell title="Status" />,
+    dataIndex: 'status',
+    key: 'status',
+    width: 50,
     render: (value: string) => getStatusBadge(value),
+  },
+
+  {
+    // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
+    title: <HeaderCell title="Actions" />,
+    dataIndex: 'action',
+    key: 'action',
+    width: 50,
+    render: (_: string, row: any) => (
+      <div className="flex items-center ">
+        <Tooltip size="sm" content={'View'} placement="top" color="invert">
+          <ActionIcon
+            as="span"
+            size="sm"
+            variant="outline"
+            aria-label={'View Job'}
+            className="hover:!border-gray-900 hover:text-gray-700"
+          >
+            <Link href={routes.admin.completedJobDetails}>
+              <EyeIcon className="h-4 w-4" />
+            </Link>
+          </ActionIcon>
+        </Tooltip>
+      </div>
+    ),
   },
 ];

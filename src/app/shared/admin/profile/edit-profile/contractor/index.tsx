@@ -18,7 +18,8 @@ import { formatDate } from '@/utils/format-date';
 import usePrice from '@/hooks/use-price';
 import { routes } from '@/config/routes';
 import Link from 'next/link';
-import CustomersTable from '../../../dashboard/tables/customers/organization';
+import HistoryTable from '../../../dashboard/tables/customers/organization';
+import ContractorHistoryTable from '../../../dashboard/tables/history-tables/contractor';
 
 function WidgetCard({
   title,
@@ -135,7 +136,7 @@ export default function EditContractorForm() {
         </div>
       </div>
 
-      <CustomersTable className="mt-6" />
+      <ContractorHistoryTable className="mt-6" />
     </div>
   );
 }

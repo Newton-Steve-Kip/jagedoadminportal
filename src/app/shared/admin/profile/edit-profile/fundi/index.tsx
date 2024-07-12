@@ -9,18 +9,14 @@ import {
   orderNoteAtom,
   shippingAddressAtom,
 } from '@/store/checkout';
-import OrderViewProducts from '@/app/shared/ecommerce/order/order-products/order-view-products';
 import { useCart } from '@/store/quick-cart/cart.context';
 import { Title, Text, Button } from 'rizzui';
 import cn from '@/utils/class-names';
-import { toCurrency } from '@/utils/to-currency';
-import { formatDate } from '@/utils/format-date';
 import usePrice from '@/hooks/use-price';
 import { routes } from '@/config/routes';
 import Link from 'next/link';
-import CustomersTable from '../../../dashboard/tables/customers/organization';
-import { useRouter } from 'next/navigation';
 import HistoryTable from '../../../dashboard/tables/fundi-history';
+import FundiHistoryTable from '../../../dashboard/tables/history-tables/fundi';
 
 interface EditFundiFormProps {
   slug?: string;
@@ -151,7 +147,7 @@ export default function EditFundiForm({ slug }: EditFundiFormProps) {
         </div>
       </div>
 
-      <HistoryTable className="mt-6" />
+      <FundiHistoryTable className="mt-6" />
     </div>
   );
 }

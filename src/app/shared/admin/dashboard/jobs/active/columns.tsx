@@ -9,38 +9,34 @@ import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
+import Link from 'next/link';
+import { routes } from '@/config/routes';
 
-function getStatusBadge(status: string, onClick: () => void) {
-  const commonProps = {
-    className: 'flex items-center cursor-pointer',
-    onClick,
-  };
-
-  switch (status.toLowerCase()) {
+function getStatusBadge(review: string) {
+  switch (review.toLowerCase()) {
     case 'ongoing':
       return (
-        <div {...commonProps}>
-          <Badge color="danger" renderAsDot />
-          <Text className="ms-2 font-medium text-red-dark">{status}</Text>
+        <div className="flex items-center">
+          <Badge color="warning" renderAsDot />
+          <Text className="ms-2 font-medium text-orange-dark">{review}</Text>
         </div>
       );
-    case 'completed':
+    case 'complete':
       return (
-        <div {...commonProps}>
+        <div className="flex items-center">
           <Badge color="success" renderAsDot />
-          <Text className="ms-2 font-medium text-green-dark">{status}</Text>
+          <Text className="ms-2 font-medium text-green-dark">{review}</Text>
         </div>
       );
     default:
       return (
-        <div {...commonProps}>
+        <div className="flex items-center">
           <Badge color="warning" renderAsDot className="bg-gray-400" />
-          <Text className="ms-2 font-medium text-gray-600">{status}</Text>
+          <Text className="ms-2 font-medium text-gray-600">{review}</Text>
         </div>
       );
   }
 }
-
 type Columns = {
   data: any[];
   sortConfig?: any;
@@ -63,48 +59,99 @@ export const getColumns = ({
   onStatusClick,
 }: Columns) => [
   {
+    title: <HeaderCell title="No" />,
+    dataIndex: 'no',
+    key: 'no',
+    width: 10,
+    render: (no: string) => <Text>{no}</Text>,
+  },
+  {
     title: <HeaderCell title="JOB ID" />,
     dataIndex: 'id',
     key: 'id',
     width: 10,
-    render: (id: string) => <Text>#{id}</Text>,
+    render: (id: string) => <Text>JOB{id}</Text>,
   },
 
   {
-    title: <HeaderCell title="Requisition Date" className="uppercase" />,
+    title: <HeaderCell title="Date" className="uppercase" />,
     dataIndex: 'requisitionDate',
     key: 'requisitionDate',
-    width: 100,
+    width: 150,
     render: (requisitionDate: Date) => <DateCell date={requisitionDate} />,
+  },
+  {
+    title: <HeaderCell title="Category" />,
+    dataIndex: 'category',
+    key: 'category',
+    width: 20,
+    render: (category: string) => <Text>{category}</Text>,
+  },
+  {
+    title: <HeaderCell title="Sub Category" />,
+    dataIndex: 'subCategory',
+    key: 'subCategory',
+    width: 80,
+    render: (category: string) => <Text>{category}</Text>,
+  },
+  {
+    title: <HeaderCell title="Request Type" />,
+    dataIndex: 'reqType',
+    key: 'reqType',
+    width: 80,
+    render: (reqType: string) => (
+      <Text className="font-semibold">{reqType}</Text>
+    ),
   },
   {
     title: <HeaderCell title="Description" />,
     dataIndex: 'description',
     key: 'description',
-    width: 80,
-    render: (gender: string) => <Text>{gender}</Text>,
+    width: 350,
+    render: (description: string) => <Text>{description}</Text>,
   },
   {
-    title: <HeaderCell title="Specification" />,
-    dataIndex: 'specification',
-    key: 'specification',
+    title: <HeaderCell title="Location" />,
+    dataIndex: 'location',
+    key: 'location',
     width: 100,
-    render: (specification: string) => <Text>{specification}</Text>,
-  },
-  {
-    title: <HeaderCell title="Assigned Fundi" />,
-    dataIndex: 'fundi',
-    key: 'fundi',
-    width: 80,
-    render: (fundi: string) => <Text>{fundi}</Text>,
+    render: (location: string) => <Text>{location}</Text>,
   },
 
   {
-    title: <HeaderCell title="Quote Status" />,
+    title: <HeaderCell title="Status" />,
     dataIndex: 'status',
     key: 'status',
     width: 120,
-    render: (value: string) =>
-      getStatusBadge(value, () => onStatusClick(value)),
+    render: (value: string) => getStatusBadge(value),
+  },
+  {
+    // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
+    title: <HeaderCell title="Actions" />,
+    dataIndex: 'action',
+    key: 'action',
+    width: 10,
+    render: (_: string, row: any) => (
+      <div className="flex items-center ">
+        <Tooltip size="sm" content={'View'} placement="top" color="invert">
+          <ActionIcon
+            as="span"
+            size="sm"
+            variant="outline"
+            aria-label={'View Appointment'}
+            className="hover:!border-gray-900 hover:text-gray-700"
+          >
+            <Link href={routes.admin.activeJobDetails}>
+              <EyeIcon className="h-4 w-4" />
+            </Link>
+          </ActionIcon>
+        </Tooltip>
+        {/* <DeletePopover
+          title={`Remove User`}
+          description={`Are you sure you want to remove this User?`}
+          onDelete={() => onDeleteItem(row.id)}
+        /> */}
+      </div>
+    ),
   },
 ];

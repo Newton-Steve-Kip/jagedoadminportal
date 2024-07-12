@@ -5,31 +5,38 @@ import { PiTrashDuotone } from 'react-icons/pi';
 
 const categoryOptions = [
   {
-    label: 'Designer',
-    value: 'designer',
+    label: 'Fundi',
+    value: 'Fundi',
   },
   {
-    label: 'Developer',
-    value: 'developer',
+    label: 'Professional',
+    value: 'Professional',
   },
   {
-    label: 'Animator',
-    value: 'animator',
+    label: 'Contractor',
+    value: 'Contractor',
+  },
+];
+
+const locationOptions = [
+  {
+    label: 'Kome,Homabay',
+    value: 'Kome,Homabay',
   },
   {
-    label: 'Artist',
-    value: 'artist',
+    label: 'Bamburi,Mombasa',
+    value: 'Bamburi,Mombasa',
   },
 ];
 
 const statusOptions = [
   {
-    label: 'Live',
-    value: 'live',
+    label: 'Open',
+    value: 'Open',
   },
   {
-    label: 'Closed',
-    value: 'closed',
+    label: 'Under Review',
+    value: 'Under Review',
   },
 ];
 
@@ -53,9 +60,26 @@ export default function FilterElement({
           className="w-full min-w-[158px] @[42rem]:w-auto"
           placeholder="Category"
           options={categoryOptions}
-          value={filters['type']}
+          value={filters['category']}
           onChange={(value: string) => {
-            updateFilter('type', value);
+            updateFilter('category', value);
+          }}
+          getOptionValue={(option: { value: any }) => option.value}
+          displayValue={(selected: string) =>
+            categoryOptions.find((option) => option.label === selected)
+              ?.label ?? ''
+          }
+          placement="bottom-start"
+        />
+
+        <StatusField
+          dropdownClassName="!z-10"
+          className="w-full min-w-[158px] @[42rem]:w-auto"
+          placeholder="Location"
+          options={locationOptions}
+          value={filters['location']}
+          onChange={(value: string) => {
+            updateFilter('location', value);
           }}
           getOptionValue={(option: { value: any }) => option.value}
           displayValue={(selected: string) =>

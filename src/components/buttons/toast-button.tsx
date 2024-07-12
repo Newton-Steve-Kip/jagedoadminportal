@@ -9,9 +9,11 @@ import { routes } from '@/config/routes';
 export default function ToastButton({
   title,
   message,
+  route,
 }: {
   title?: string;
   message?: string;
+  route?: string;
 }) {
   const router = useRouter();
 
@@ -20,7 +22,9 @@ export default function ToastButton({
       toast.success(<Text as="b">{message}</Text>);
     }
 
-    router.push(routes.admin.dashboard);
+    if (route) {
+      router.push(route);
+    }
   };
 
   return (

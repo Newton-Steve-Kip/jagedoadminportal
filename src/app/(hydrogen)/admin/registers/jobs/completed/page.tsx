@@ -3,7 +3,7 @@ import CompletedJobsTable from '@/app/shared/admin/dashboard/jobs/completed';
 import { metaObject } from '@/config/site.config';
 
 export const metadata = {
-  ...metaObject('Ongoing Jobs'),
+  ...metaObject('Complete Jobs'),
 };
 
 export default function IndividualPage() {
