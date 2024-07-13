@@ -6,7 +6,7 @@ import { useTable } from '@/hooks/use-table';
 import ControlledTable from '@/components/controlled-table';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 import { Input } from 'rizzui';
-import { requisitions } from '@/data/job-data';
+import { billofQuantity, requisitions } from '@/data/job-data';
 import { getColumns } from './columns';
 import FilterElement from './filter-element';
 import WidgetCard2 from '@/components/cards/widget-card2';
@@ -51,12 +51,12 @@ export default function BillofQuotationsTable({
     handleSelectAll,
     handleDelete,
     handleReset,
-  } = useTable(requisitions, pageSize, filterState);
+  } = useTable(billofQuantity, pageSize, filterState);
 
   const columns = useMemo(
     () =>
       getColumns({
-        data: requisitions,
+        data: billofQuantity,
         sortConfig,
         checkedItems: selectedRowKeys,
         onHeaderCellClick,
@@ -87,7 +87,7 @@ export default function BillofQuotationsTable({
       titleClassName="whitespace-nowrap font-inter"
     >
       <ControlledTable
-        variant="modern"
+        variant="bordered"
         data={tableData}
         isLoading={isLoading}
         showLoadingText={true}

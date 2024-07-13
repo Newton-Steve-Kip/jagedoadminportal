@@ -1,3 +1,5 @@
+'use client';
+
 import { routes } from '@/config/routes';
 import { DUMMY_ID } from '@/config/constants';
 import {
@@ -115,28 +117,21 @@ export const menuItems: MenuItem[] = [
     icon: <PiUserCircleDuotone />,
     dropdownItems: [
       {
-        name: 'Profile Creation',
+        name: 'Fundi',
         href: routes.admin.createFundiProfile,
-        badge: '',
-        dropdownItems: [
-          {
-            name: 'Fundi',
-            href: routes.admin.createFundiProfile,
-          },
+      },
 
-          {
-            name: 'Professional',
-            href: routes.admin.createProfessionalProfile,
-          },
-          {
-            name: 'Contractor',
-            href: routes.admin.createContractorProfile,
-          },
-          {
-            name: 'Customer',
-            href: routes.admin.createCustomerProfile,
-          },
-        ],
+      {
+        name: 'Professional',
+        href: routes.admin.createProfessionalProfile,
+      },
+      {
+        name: 'Contractor',
+        href: routes.admin.createContractorProfile,
+      },
+      {
+        name: 'Customer',
+        href: routes.admin.createCustomerProfile,
       },
 
       // {

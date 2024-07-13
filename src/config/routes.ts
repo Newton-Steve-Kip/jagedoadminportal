@@ -3,12 +3,13 @@ import { requisitions } from '@/data/job-data';
 export const routes = {
   admin: {
     dashboard: '/admin',
+    rfq: '/admin/rfq',
 
     //Profile
     createCustomerProfile: '/admin/profile/create-profile/customers',
     createFundiProfile: '/admin/profile-page/profile',
-    createContractorProfile: '/admin/profile/create-profile/contractor',
-    createProfessionalProfile: '/admin/profile/create-profile/professional',
+    createContractorProfile: '/admin/contractor-profile',
+    createProfessionalProfile: '/admin/professional-profile',
     // editIndividualCustomerProfile:
     //   '/admin/profile/edit-profile/customer-individual',
     // editOrgCustomerProfile: '/admin/profile/edit-profile/customer-organization',
@@ -45,9 +46,9 @@ export const routes = {
     requisitionDetails: '/admin/requisition-details',
     createRFQ: '/admin/requisition-details/requisition-for-quotation',
 
-    //Generate Report
+    //Report
     generateSingleReport: '/admin/single-report',
-    generateReport: '/admin/generate-report',
+    generateReport: '/admin/report',
   },
 
   customers: {

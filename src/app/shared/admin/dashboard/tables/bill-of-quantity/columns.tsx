@@ -33,35 +33,35 @@ export const getColumns = ({
 }: Columns) => [
   {
     title: <HeaderCell title="Bill No " />,
-    dataIndex: 'category',
-    key: 'category',
+    dataIndex: 'billNo',
+    key: 'billNo',
     width: 200,
-    render: (category: string) => (
+    render: (billNo: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {category}
+        {billNo}
       </Text>
     ),
   },
   {
     title: <HeaderCell title="Works" />,
-    dataIndex: 'subCategory',
-    key: 'subCategory',
+    dataIndex: 'works',
+    key: 'works',
     width: 200,
-    render: (subCategory: string) => (
+    render: (works: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {subCategory}
+        {works}
       </Text>
     ),
   },
 
   {
     title: <HeaderCell title="Amount" />,
-    dataIndex: 'location',
-    key: 'location',
+    dataIndex: 'amount',
+    key: 'amount',
     width: 200,
-    render: (location: string) => (
+    render: (amount: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {location}
+        {amount}
       </Text>
     ),
   },

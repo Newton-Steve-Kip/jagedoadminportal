@@ -4,7 +4,6 @@ import { HeaderCell } from '@/components/ui/table';
 import { Text, Checkbox, ActionIcon, Tooltip, Select, Badge } from 'rizzui';
 import PencilIcon from '@/components/icons/pencil';
 import EyeIcon from '@/components/icons/eye';
-import DeletePopover from '@/app/shared/commons/delete-popover';
 import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
 import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
@@ -198,18 +197,7 @@ export const getColumns = ({
     key: 'action',
     width: 180,
     render: (_: string, row: any) => (
-      <div className="flex items-center justify-end gap-3 pe-3">
-        <Tooltip size="sm" content={'Edit'} placement="top" color="invert">
-          <ActionIcon
-            as="span"
-            size="sm"
-            variant="outline"
-            aria-label={'Edit Appointment'}
-            className="hover:!border-gray-900 hover:text-gray-700"
-          >
-            <PencilIcon className="h-4 w-4" />
-          </ActionIcon>
-        </Tooltip>
+      <div className="flex items-center justify-end ">
         <Tooltip size="sm" content={'View'} placement="top" color="invert">
           <ActionIcon
             as="span"

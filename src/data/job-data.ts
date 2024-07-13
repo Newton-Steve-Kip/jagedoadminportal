@@ -1,5 +1,45 @@
 import { Description } from '@headlessui/react/dist/components/description/description';
 
+export const billofQuantity = [
+  {
+    billNo: '1',
+    works: 'Prelimanries',
+    amount: '50,000',
+  },
+  {
+    billNo: '2',
+    works: "Builder's work",
+    amount: '50,000',
+  },
+  {
+    billNo: '3',
+    works: 'Provisional Sums',
+    amount: '250,000',
+  },
+  {
+    billNo: '4',
+    works: 'Contingencies',
+    amount: '165,000',
+  },
+];
+
+export const disbursement = [
+  {
+    disbursement: '45',
+    milestoneActivity: 'Drilling and Flushing',
+    amount: '1,350,000',
+  },
+  {
+    disbursement: '45',
+    milestoneActivity: 'Construction and Development',
+    amount: '350,000',
+  },
+  {
+    disbursement: '10',
+    milestoneActivity: 'Defects Liability Period',
+    amount: '1,350,000',
+  },
+];
 export const requisitions = [
   {
     id: '3416',
@@ -311,6 +351,46 @@ export const reviewData = [
     rating: 2,
   },
 ];
+
+export const reportSummary = [
+  {
+    item: '1',
+    serviceProvider: 'Newton Steve',
+    fee: '5000',
+    expenses: '2500',
+    amount: '7500',
+    discount: '',
+    payableClient: '7500',
+    tax: '',
+    payabletoSP: '7500',
+    comments: '',
+  },
+  {
+    item: '2',
+    serviceProvider: 'Musa Hamisi',
+    fee: '4000',
+    expenses: '2500',
+    amount: '6500',
+    discount: '',
+    payableClient: '6500',
+    tax: '',
+    payabletoSP: '6500',
+    comments: '',
+  },
+  {
+    item: '3',
+    serviceProvider: 'Kennedy  Rapudo',
+    fee: '8000',
+    expenses: '2500',
+    amount: '10,500',
+    discount: '',
+    payableClient: '10,500',
+    tax: '',
+    payabletoSP: '10,500',
+    comments: '',
+  },
+];
+
 export const historyData = [
   {
     id: '3324',

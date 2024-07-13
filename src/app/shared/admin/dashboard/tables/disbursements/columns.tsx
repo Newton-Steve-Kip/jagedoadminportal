@@ -33,8 +33,8 @@ export const getColumns = ({
 }: Columns) => [
   {
     title: <HeaderCell title="% Disbursements " />,
-    dataIndex: 'category',
-    key: 'category',
+    dataIndex: 'disbursement',
+    key: 'disbursement',
     width: 200,
     render: (category: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
@@ -44,24 +44,24 @@ export const getColumns = ({
   },
   {
     title: <HeaderCell title="Milestone Activity" />,
-    dataIndex: 'subCategory',
-    key: 'subCategory',
+    dataIndex: 'milestoneActivity',
+    key: 'milestoneActivity',
     width: 200,
-    render: (subCategory: string) => (
+    render: (milestoneActivity: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {subCategory}
+        {milestoneActivity}
       </Text>
     ),
   },
 
   {
     title: <HeaderCell title="Amount" />,
-    dataIndex: 'location',
-    key: 'location',
+    dataIndex: 'amount',
+    key: 'amount',
     width: 200,
-    render: (location: string) => (
+    render: (amount: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {location}
+        {amount}
       </Text>
     ),
   },

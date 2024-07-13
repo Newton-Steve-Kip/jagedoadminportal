@@ -25,6 +25,12 @@ export default function SignInForm() {
     signIn('credentials', {
       ...data,
     });
+
+    if (data.email === 'organization@email.com') {
+      window.sessionStorage.setItem('role', 'organization');
+    } else if (data.email === 'individual@email.com') {
+      window.sessionStorage.setItem('role', 'individual');
+    }
   };
 
   return (

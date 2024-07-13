@@ -7,21 +7,19 @@ import EyeIcon from '@/components/icons/eye';
 import DeletePopover from '@/app/shared/commons/delete-popover';
 import DateCell from '@/components/ui/date-cell';
 import { useState } from 'react';
-import { PiCheckCircleBold, PiPlusCircle, PiStarFill } from 'react-icons/pi';
+import { PiCheckCircleBold, PiPlusCircle } from 'react-icons/pi';
 import { last } from 'lodash';
-import Link from 'next/link';
-import { routes } from '@/config/routes';
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'unverified':
+    case 'pending':
       return (
         <div className="flex items-center">
           <Badge color="warning" renderAsDot />
           <Text className="ms-2 font-medium text-orange-dark">{status}</Text>
         </div>
       );
-    case 'approved':
+    case 'complete':
       return (
         <div className="flex items-center">
           <Badge color="success" renderAsDot />
@@ -36,28 +34,6 @@ function getStatusBadge(status: string) {
         </div>
       );
   }
-}
-
-const statusOptions = [
-  { label: 'Live', value: 'Live' },
-  { label: 'Closed', value: 'Closed' },
-];
-
-function getRating(rating: number) {
-  const totalStars = 5;
-  const filledStars = Math.round(rating); // Round the rating to determine how many stars to fill
-
-  return (
-    <div className="flex items-center">
-      <span className="me-1">{rating.toFixed(1)}</span>
-      {[...Array(totalStars)].map((_, index) => (
-        <PiStarFill
-          key={index}
-          className={`w-4 ${index < filledStars ? 'fill-orange text-orange' : 'fill-gray-300 text-gray-300'}`}
-        />
-      ))}
-    </div>
-  );
 }
 
 type Columns = {
@@ -80,83 +56,88 @@ export const getColumns = ({
   onHeaderCellClick,
 }: Columns) => [
   {
-    title: <HeaderCell title="#" />,
-    dataIndex: 'id',
-    key: 'id',
-    width: 10,
-    render: (id: string) => <Text>{id}</Text>,
+    title: <HeaderCell title="Item" className="uppercase" />,
+    dataIndex: 'item',
+    key: 'item',
+    width: 50,
+    render: (item: string) => <Text>{item}</Text>,
   },
 
   {
-    title: <HeaderCell title="Service Provider" />,
+    title: <HeaderCell title="Service Provider." />,
     dataIndex: 'serviceProvider',
     key: 'serviceProvider',
-    width: 100,
-    render: (serviceProvider: string) => (
+    width: 150,
+    render: (serviceProvider: string) => <Text>{serviceProvider}</Text>,
+  },
+
+  {
+    title: <HeaderCell title="Fee" />,
+    dataIndex: 'fee',
+    key: 'fee',
+    width: 50,
+    render: (fee: string) => (
       <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
-        {serviceProvider}
+        {fee}
       </Text>
     ),
   },
   {
-    title: <HeaderCell title="Category" />,
-    dataIndex: 'category',
-    key: 'category',
+    title: <HeaderCell title="Expenses" />,
+    dataIndex: 'expenses',
+    key: 'expenses',
     width: 100,
-    render: (category: string) => <Text>{category}</Text>,
+    render: (expenses: string) => (
+      <Text className="text-sm font-semibold text-gray-900 dark:text-gray-700">
+        {expenses}
+      </Text>
+    ),
   },
   {
-    title: <HeaderCell title="Sub Category" />,
-    dataIndex: 'subCategory',
-    key: 'subCategory',
+    title: <HeaderCell title="Amount" />,
+    dataIndex: 'amount',
+    key: 'amount',
     width: 80,
-    render: (subCategory: string) => <Text>{subCategory}</Text>,
-  },
-  {
-    title: <HeaderCell title="Job Description" />,
-    dataIndex: 'description',
-    key: 'description',
-    width: 200,
-    render: (description: string) => <Text>{description}</Text>,
+    render: (amount: string) => <Text>{amount}</Text>,
   },
 
   {
-    title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
+    title: <HeaderCell title="Discount Commission" />,
+    dataIndex: 'discount',
+    key: 'discount',
+    width: 80,
+    render: (discount: string) => <Text>{discount}</Text>,
+  },
+
+  {
+    title: <HeaderCell title="Payable Client" />,
+    dataIndex: 'payableClient',
+    key: 'payableClient',
     width: 120,
-    render: (value: string) => getStatusBadge(value),
+    render: (payableClient: string) => <Text>{payableClient}</Text>,
   },
-
   {
-    title: <HeaderCell title="Rating" />,
-    dataIndex: 'rating',
-    key: 'rating',
-    width: 50,
-    render: (rating: number) => getRating(rating),
+    title: <HeaderCell title="Withholding Tax" />,
+    dataIndex: 'tax',
+    key: 'tax',
+    width: 120,
+    render: (tax: string) => <Text>{tax}</Text>,
+  },
+  {
+    title: <HeaderCell title="Payable to SP" />,
+    dataIndex: 'payabletoSP',
+    key: 'payabletoSP',
+    width: 120,
+    render: (tax: string) => <Text>{tax}</Text>,
+  },
+  {
+    title: <HeaderCell title="Comments" />,
+    dataIndex: 'comments',
+    key: 'comments',
+    width: 120,
+    render: (comments: string) => <Text>{comments}</Text>,
   },
 ];
-
-function StatusSelect({ selectItem }: { selectItem?: string }) {
-  const selectItemValue = statusOptions.find(
-    (option) => option.value === selectItem
-  );
-  const [value, setValue] = useState(selectItemValue);
-  return (
-    <Select
-      dropdownClassName="!z-10"
-      className="min-w-[140px]"
-      inPortal={false}
-      placeholder="Select Role"
-      options={statusOptions}
-      value={value}
-      onChange={setValue}
-      displayValue={(option: { value: any }) =>
-        renderOptionDisplayValue(option.value as string)
-      }
-    />
-  );
-}
 
 function renderOptionDisplayValue(value: string) {
   switch (value) {
